@@ -4,9 +4,6 @@
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-body{
-    background-color: #fff;
-}
 
 a{
     text-decoration: none;
@@ -28,7 +25,6 @@ a{
     height: 40px;
     z-index: 1;
     padding: 5px;
-    
 }
 
 .child:hover{
@@ -49,13 +45,25 @@ a{
     color: black;
     background-color: #57CC99;
     position: absolute;
-    padding: 15px;
-    bottom: 40px;
-    right: 40px;
+    padding: 20px;
+    bottom: 50px;
+    right: 50px;
     border-radius: 10px;
 }
 
 .button:hover{
     background: #40e69e;
     transition: background 1s;
+}
+
+.textoAceite{
+    color: black;
+    text-align: justify;
+    position: absolute;
+    background-color: #abd2fa;
+    padding: 40px;
+    border-radius: 10px;
+    top: 30%;
+    right: 20%;
+    left: 20%;
 }
