@@ -41,13 +41,30 @@ async function run(ID) {
    }
  }
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + '/indexGerar.html')
+  res.sendFile(__dirname + '/index.html')
 });
+
+app.get("/Gerar_bilhete",(req,res) => {
+  res.sendFile(__dirname + '/public/indexGerar.html')
+})
+app.get("/Recarga",(req,res) => {
+  res.sendFile(__dirname + '/public/indexRecarga.html')
+})
+app.get("/Relatorio",(req,res) => {
+  res.sendFile(__dirname + '/public/indexRelatorio.html')
+})
+app.get("/Utilizar",(req,res) => {
+  res.sendFile(__dirname + '/public/indexUtilizar.html')
+})
+
+
 
 
 app.listen(port, () => {
   console.log("Servidor Rodando.");
 });
+
+
 
 app.post('/generate',(req,res) => {
   ID = Math.floor(Math.random() * 100000) + 1;    
