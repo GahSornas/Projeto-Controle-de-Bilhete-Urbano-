@@ -4,7 +4,6 @@ const port = 8111;
 const oracledb = require('oracledb');
 
 
-
 app.use(express.static('public'))
 
 
@@ -14,6 +13,7 @@ async function run(ID) {
  
    try {
  
+
      connection = await oracledb.getConnection({ user: "system", 
      password: "system", 
      connectionString: "localhost:1521/xe" });
@@ -25,8 +25,10 @@ async function run(ID) {
      await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`); 
  
      // Insert some data
- 
+
+
      connection.commit();
+
  
    } catch (err) {
      console.error(err);
@@ -63,7 +65,6 @@ app.get("/Utilizar",(req,res) => {
 app.listen(port, () => {
   console.log("Servidor Rodando.");
 });
-
 
 
 app.post('/generate',(req,res) => {

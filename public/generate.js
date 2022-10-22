@@ -1,8 +1,9 @@
-let ID ;
-
 document.getElementById("btnGerarBilhete").onclick = function () {
-    console.log("uwu")
+    document.getElementById("showID").innerHTML = "gerando bilhete...";
     fetch('/generate',{method:'POST'})
+
 };
 
+
+//const header = document.getElementById("showID")
 

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/GahSornas/Projeto-Controle-de-Bilhete-Urbano-#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "express": "^4.18.1",
     "oracledb": "^5.5.0"
   }
