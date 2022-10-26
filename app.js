@@ -49,7 +49,7 @@ async function run(ID) {
      if (connection) {
        try {
          await connection.close();
-       } catch (err) {
+        } catch (err) {
          console.error(err);
        }
      }
