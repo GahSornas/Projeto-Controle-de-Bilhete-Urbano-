@@ -6,6 +6,11 @@ const oracledb = require('oracledb');
 
 app.use(express.static('public'))
 
+function generateID(){
+  ID = Math.floor(Math.random() * 100000) + 1;
+  console.log("new ID");
+  return ID;
+}
 
 async function run(ID) {
 
@@ -19,11 +24,19 @@ async function run(ID) {
      connectionString: "localhost:1521/xe" });
  
      console.log("Successfully connected to Oracle Database");
- 
-     // Create a table
- 
-     await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`); 
- 
+      /*TESTE*///ID = 1;
+    async function insertDB(ID){
+      try{
+        await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`); 
+      }catch (err){
+        console.log(err);
+        ID = generateID();
+        insertDB(ID)
+      } 
+
+    }
+    console.log(ID);
+    insertDB(ID);
      // Insert some data
 
 
@@ -68,7 +81,7 @@ app.listen(port, () => {
 
 
 app.post('/generate',(req,res) => {
-  ID = Math.floor(Math.random() * 100000) + 1;    
+  ID = generateID();
   console.log("ID:%i",ID);
-  run(ID);
+  run(ID); 
 })
