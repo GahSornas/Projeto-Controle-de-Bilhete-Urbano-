@@ -123,7 +123,12 @@ app.post('/generate',(req,res) => {
     id : ID,
     message: "id criado"
   })
-  
+  res = {
+    id : ID,
+    message: "id criado"
+  }
+  console.log("RES:")
+  console.log(res)
 })
 
 
@@ -134,5 +139,9 @@ app.post('/teste',(req,res) => {
     id : "r23r23",
     message: "id criado"
   })
-
+  res = {
+    id : "r23r23",
+    message: "id criado"
+  }
+  console.log(res)
 })
