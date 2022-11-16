@@ -2,6 +2,21 @@ const express = require("express");
 const app = express();
 const port = 8111;
 const oracledb = require('oracledb');
+const bodyParser = require('body-parser')
+
+
+const dbCredentials = {
+    user: 'PI',
+    password: '123456',
+    connectString: 'localhost:1521/xe'
+}
+
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.json())
+app.use(express.urlencoded());
 
 
 app.use(express.static('public'))
@@ -12,29 +27,41 @@ function generateID(){
   return ID;
 }
 
+function printData()
+{
+  
+  async function getDatabyID(ID){
+    try{
+      await connection.execute(`select * from BILHETE where id=${ID}`)
+    }catch (err){
+      console.log(err)
+    }
+  }
+  
+}
+
+
+
 async function run(ID) {
 
    let connection;
  
    try {
- 
-
-     connection = await oracledb.getConnection({ user: "system", 
-     password: "system", 
-     connectionString: "localhost:1521/xe" });
+     connection = await oracledb.getConnection(dbCredentials);
  
      console.log("Successfully connected to Oracle Database");
       /*TESTE*///ID = 1;
+
     async function insertDB(ID){
       try{
-        await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`); 
+        await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`);
       }catch (err){
         console.log(err);
         ID = generateID();
         insertDB(ID)
       } 
-
     }
+    
     console.log(ID);
     insertDB(ID);
      // Insert some data
@@ -55,6 +82,10 @@ async function run(ID) {
      }
    }
  }
+
+
+
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + '/index.html')
 });
@@ -72,7 +103,11 @@ app.get("/Utilizar",(req,res) => {
   res.sendFile(__dirname + '/public/indexUtilizar.html')
 })
 
-
+app.get("/seeID",(req,res)=>{
+  console.log(req)
+  getDatabyID(req.params.ID)
+  
+})
 
 
 app.listen(port, () => {
@@ -83,5 +118,21 @@ app.listen(port, () => {
 app.post('/generate',(req,res) => {
   ID = generateID();
   console.log("ID:%i",ID);
-  run(ID); 
+  run(ID);
+  res.send({
+    id : ID,
+    message: "id criado"
+  })
+  
+})
+
+
+
+app.post('/teste',(req,res) => {
+
+  res.send({
+    id : "r23r23",
+    message: "id criado"
+  })
+
 })
