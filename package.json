@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "back-end",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "main": "nodemon app.js"
   },

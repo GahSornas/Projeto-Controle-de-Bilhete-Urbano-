@@ -1,8 +1,12 @@
-const express = require("express");
+import express  from "express";
+import oracledb from 'oracledb';
+import bodyParser  from 'body-parser';
+import path from 'path';
+
+const __dirname = path.resolve(path.dirname(''));
 const app = express();
 const port = 8111;
-const oracledb = require('oracledb');
-const bodyParser = require('body-parser')
+//import {seeID} from "./dbInsert.js";
 
 
 const dbCredentials = {
@@ -27,18 +31,18 @@ function generateID(){
   return ID;
 }
 
-function printData()
-{
+// function printData()
+// {
   
-  async function getDatabyID(ID){
-    try{
-      await connection.execute(`select * from BILHETE where id=${ID}`)
-    }catch (err){
-      console.log(err)
-    }
-  }
+//   async function getDatabyID(ID){
+//     try{
+//       await connection.execute(`select * from BILHETE where id=${ID}`)
+//     }catch (err){
+//       console.log(err)
+//     }
+//   }
   
-}
+// }
 
 
 

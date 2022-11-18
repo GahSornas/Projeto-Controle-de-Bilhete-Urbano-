@@ -1,4 +1,4 @@
-import {sayHi, sayBye} from './say.js';
+import {sayHi, sayBye} from './test1.js';
 
 sayHi('John'); // Hello, John!
 sayBye('John');
