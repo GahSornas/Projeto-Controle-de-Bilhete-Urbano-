@@ -13,5 +13,5 @@
 
 document.button.getElementsByClassName("btnRecarga").onclick =
  function(){
-    console.log("UWU")
+    console.log("")
 }
