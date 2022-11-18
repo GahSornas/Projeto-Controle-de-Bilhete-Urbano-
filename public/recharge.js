@@ -1,4 +1,4 @@
-// document.getElementById("btnRecarga").onclick = 
+// document.getElementById("btnRecarga").onclick =
 // async function () {
 //     value= document.getElementById('campoBilheteRecarga').outerHTML;
 //     fetch('/recharge',{
@@ -24,3 +24,13 @@ document.button.getElementsByClassName("btnRecargaUnico").onclick =
 //     console.log(value)
 //     console.log(value)
 // }
+document.button.getElementsByClassName("btnRecarga").onclick = function () {
+  console.log("");
+};
+
+function abrirPopup(id) {
+  document.getElementById(id).style.display = "block";
+}
+function fecharPopup(id) {
+  document.getElementById(id).style.display = "none";
+}
