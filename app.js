@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8111;
 const oracledb = require('oracledb');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 
 const dbCredentials = {
@@ -60,25 +60,7 @@ async function seeID(dbConfig,ID) {
 }
 
 
-async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
 
-  let connection;
-
-  try {
-    connection = await oracledb.getConnection(dbConfig);
-    await connection.execute(`insert into RECARGA values (${id_recarga},current_timestamp,${ID},${kindID});`);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }
-}
 
 
 
@@ -171,16 +153,45 @@ app.post('/generate',(req,res) => {
   console.log(res)
 })
 
+async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
+
+  let connection;
+
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+    response = await connection.execute(`insert into RECARGA values (${id_recarga},current_timestamp,${ID},'${kindID}')`);
+    connection.commit();
+    console.log(response.rows);
+    console.log("generated recarga")
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+}
 
 app.post('/recharge',(req,res) => {
   var id = req.body.id;
   var kindID = req.body.kindID;
-  result = insertRecarga(dbCredentials,id_recarga,id,kindID)
-  .then
+  id_generated = generateID(),
+  insertRecarga(dbCredentials,id_generated,id,kindID);
+  console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
   res.status(200).send({
     message: "id received",
-    id : id
+    id : id,
+    kindID : kindID
   })
+  res = {
+    message : "recarga feita",
+    id: id,
+    kindID : kindID
+  }
 
 })
 
@@ -199,5 +210,6 @@ app.post('/teste',(req,res) => {
 })
 
 
-seeID(dbCredentials,20314)
-.then(res => console.log(res))
+// seeID(dbCredentials,20314)
+// .then(res => console.log(res))
+
