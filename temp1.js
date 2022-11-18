@@ -1,12 +1,15 @@
-const oracledb = require('oracledb')
-const uwu = require('./dbInsert')
+async function run(){
+    fetch('/recharge',{
+        method:"POST",
+        body : {
+            id : "7404",
+        kindID : "unico"
+        }
+        })
+    .then(res => res.json())
+    .then(res => console.log(res))
+} 
 
 
-const dbCredentials = {
-    user: 'PI',
-    password: '123456',
-    connectString: 'localhost:1521/xe'
-}
 
-uwu.run(dbCredentials,7404)
-.then(res => console.log(res))
+run()

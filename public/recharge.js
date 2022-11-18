@@ -3,6 +3,7 @@
 //     value= document.getElementById('campoBilheteRecarga').outerHTML;
 //     fetch('/recharge',{
 //         method:'POST',
+
 //         id : value,
 //         kindID : "unico"
 //     })
@@ -11,7 +12,15 @@
 //         .catch(error => console.log(error))
 //         }
 
-document.button.getElementsByClassName("btnRecarga").onclick =
- function(){
-    console.log("")
-}
+document.button.getElementsByClassName("btnRecargaUnico").onclick = 
+     function(){
+        var uwu = document.getElementById('campoBilheteRecarga').value;
+        console.log(uwu);
+    }
+
+
+//  function(){
+//     var value = document.getElementById('campoBilheteRecarga').value;
+//     console.log(value)
+//     console.log(value)
+// }
