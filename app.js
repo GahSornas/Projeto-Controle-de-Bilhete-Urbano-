@@ -1,12 +1,8 @@
-import express  from "express";
-import oracledb from 'oracledb';
-import bodyParser  from 'body-parser';
-import path from 'path';
-
-const __dirname = path.resolve(path.dirname(''));
+const express = require("express");
 const app = express();
 const port = 8111;
-//import {seeID} from "./dbInsert.js";
+const oracledb = require('oracledb');
+const bodyParser = require('body-parser')
 
 
 const dbCredentials = {
@@ -31,18 +27,58 @@ function generateID(){
   return ID;
 }
 
-// function printData()
-// {
-  
-//   async function getDatabyID(ID){
-//     try{
-//       await connection.execute(`select * from BILHETE where id=${ID}`)
-//     }catch (err){
-//       console.log(err)
-//     }
-//   }
-  
-// }
+
+async function seeID(dbConfig,ID) {
+
+  let connection;
+
+  try {
+    // Get a non-pooled connection
+
+    connection = await oracledb.getConnection(dbConfig);
+
+
+    const result = await connection.execute(
+      // The statement to execute
+      `SELECT * from bilhete where id_bilhete = ${ID}`,
+      );
+    
+    return [result.rows[0][0],result.rows[0][1]];
+    
+
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+}
+
+
+async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
+
+  let connection;
+
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+    await connection.execute(`insert into RECARGA values (${id_recarga},current_timestamp,${ID},${kindID});`);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+}
 
 
 
@@ -65,7 +101,7 @@ async function run(ID) {
         insertDB(ID)
       } 
     }
-    
+
     console.log(ID);
     insertDB(ID);
      // Insert some data
@@ -107,11 +143,11 @@ app.get("/Utilizar",(req,res) => {
   res.sendFile(__dirname + '/public/indexUtilizar.html')
 })
 
-app.get("/seeID",(req,res)=>{
-  console.log(req)
-  getDatabyID(req.params.ID)
+// app.get("/seeID",(req,res)=>{
+//   console.log(req)
+//   getDatabyID(req.params.ID)
   
-})
+// })
 
 
 app.listen(port, () => {
@@ -136,6 +172,18 @@ app.post('/generate',(req,res) => {
 })
 
 
+app.post('/recharge',(req,res) => {
+  var id = req.body.id;
+  var kindID = req.body.kindID;
+  result = insertRecarga(dbCredentials,id_recarga,id,kindID)
+  .then
+  res.status(200).send({
+    message: "id received",
+    id : id
+  })
+
+})
+
 
 app.post('/teste',(req,res) => {
 
@@ -149,3 +197,7 @@ app.post('/teste',(req,res) => {
   }
   console.log(res)
 })
+
+
+seeID(dbCredentials,20314)
+.then(res => console.log(res))

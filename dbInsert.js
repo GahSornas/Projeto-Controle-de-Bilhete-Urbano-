@@ -48,4 +48,10 @@ async function seeID(dbConfig,ID) {
 // seeID(dbCredentials,7404)
 // .then(res => console.log(res))
 
-module.exports = {seeID}
+module.exports  = {
+  addNumbers,
+}
+
+module.exports = {
+  seeID,
+}
