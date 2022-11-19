@@ -10,6 +10,5 @@ document.getElementById("btnGerarBilhete").onclick =
 
 
 
-
 //const header = document.getElementById("showID")
 
