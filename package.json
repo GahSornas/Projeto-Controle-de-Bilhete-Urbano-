@@ -4,13 +4,13 @@
   "description": "back-end",
   "main": "app.js",
   "scripts": {
-    "main": "nodemon app.js"
+    "main": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GahSornas/Projeto-Controle-de-Bilhete-Urbano-.git"
   },
-  "author": "",
+  "author": "Equipe 2",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GahSornas/Projeto-Controle-de-Bilhete-Urbano-/issues"
@@ -24,5 +24,8 @@
     "fix": "^0.0.6",
     "node-fetch": "^3.3.0",
     "oracledb": "^5.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
