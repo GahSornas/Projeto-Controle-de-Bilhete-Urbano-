@@ -11,13 +11,14 @@
 //         .catch(error => console.log(error))
 //         }
 
-document.button.getElementsByClassName("btnRecarga").onclick = function () {
-  console.log("");
-};
+
 
 function abrirPopup(id) {
   document.getElementById(id).style.display = "block";
+  const campoID = document.querySelector("#campoBilheteRecarga");
+  console.log(campoID.value);
 }
 function fecharPopup(id) {
   document.getElementById(id).style.display = "none";
 }
+
