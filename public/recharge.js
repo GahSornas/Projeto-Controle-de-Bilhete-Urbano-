@@ -24,12 +24,39 @@ document.button.getElementsByClassName("btnRecargaUnico").onclick =
 //     console.log(value)
 //     console.log(value)
 // }
-document.button.getElementsByClassName("btnRecarga").onclick = function () {
-  console.log("");
-};
+// document.button.getElementsByClassName("btnRecarga").onclick =  async function () {
+//   console.log("uwu");
+//     fetch('/recharge',{
+//         method:'POST',
 
-function abrirPopup(id) {
+//         id : "1234",
+//         kindID : "unico"
+//     })
+//         .then(response => response.json())
+//         .then(response => document.getElementById("showID").innerHTML = response['id'])
+//         .catch(error => console.log(error))
+// };
+
+async function abrirPopup(id) {
   document.getElementById(id).style.display = "block";
+  await fetch('/teste',{
+    method:'POST',
+    headers : {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body : JSON.stringify
+    (
+      {
+         id : "17063",
+         kindID : "unico"
+      }
+    )
+})
+    .then(response => response.json())
+    .then(response => console.log(response))
+    //.then(response => document.getElementById("showID").innerHTML = response['id'])
+    .catch(error => console.log(error))
 }
 function fecharPopup(id) {
   document.getElementById(id).style.display = "none";
