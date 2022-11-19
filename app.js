@@ -155,10 +155,9 @@ async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
 
   try {
     connection = await oracledb.getConnection(dbConfig);
-    result = await connection.execute(`insert into RECARGA values (${id_recarga},current_timestamp,${ID},'${kindID}')`);
+    await connection.execute(`insert into RECARGA values (${id_recarga},current_timestamp,${ID},'${kindID}')`);
     select = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete = ${ID}`);
     connection.commit();
-    console.log(result);
     console.log("generated recarga")
     return select;
   } catch (err) {
@@ -179,11 +178,13 @@ app.post('/recharge', async (req,res) => {
   var kindID = req.body.kindID;
   
   id_generated = generateID(),
+  console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
+  
   resAux = await insertRecarga(dbCredentials,id_generated,id,kindID);
 
   console.log(resAux);
-  console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
-  
+  //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
+
   res.status(200).send({
     message: "id received",
     id : id,

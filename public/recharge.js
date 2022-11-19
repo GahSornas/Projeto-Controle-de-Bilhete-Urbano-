@@ -1,45 +1,5 @@
-// document.getElementById("btnRecarga").onclick =
-// async function () {
-//     value= document.getElementById('campoBilheteRecarga').outerHTML;
-//     fetch('/recharge',{
-//         method:'POST',
-
-//         id : value,
-//         kindID : "unico"
-//     })
-//         .then(response => response.json())
-//         .then(response => document.getElementById("showID").innerHTML = response['id'])
-//         .catch(error => console.log(error))
-//         }
-
-document.button.getElementsByClassName("btnRecargaUnico").onclick = 
-     function(){
-        var uwu = document.getElementById('campoBilheteRecarga').value;
-        console.log(uwu);
-    }
-
-
-//  function(){
-//     var value = document.getElementById('campoBilheteRecarga').value;
-//     console.log(value)
-//     console.log(value)
-// }
-// document.button.getElementsByClassName("btnRecarga").onclick =  async function () {
-//   console.log("uwu");
-//     fetch('/recharge',{
-//         method:'POST',
-
-//         id : "1234",
-//         kindID : "unico"
-//     })
-//         .then(response => response.json())
-//         .then(response => document.getElementById("showID").innerHTML = response['id'])
-//         .catch(error => console.log(error))
-// };
-
-async function abrirPopup(id) {
-  document.getElementById(id).style.display = "block";
-  await fetch('/teste',{
+async function connectBack(id,kindID){
+  await fetch('/recharge',{
     method:'POST',
     headers : {
       'Accept': 'application/json',
@@ -48,41 +8,56 @@ async function abrirPopup(id) {
     body : JSON.stringify
     (
       {
-         id : "17063",
-         kindID : "unico"
+         id : id,
+         kindID : kindID
       }
     )
-})
-    .then(response => response.json())
+  }
+  )
+  then(response => response.json())
     .then(response => console.log(response))
     //.then(response => document.getElementById("showID").innerHTML = response['id'])
     .catch(error => console.log(error))
 }
-function abrirPopupBilUnico(id) {
+
+
+async function abrirPopup(id) {
   document.getElementById(id).style.display = "block";
-  const campoID = document.querySelector("#campoBilheteRecarga");
+}
+
+
+async function abrirPopupBilUnico(id) {
+  let campoID = document.querySelector("#campoBilheteRecarga");
+  if(campoID == 0){
+    return null;
+  }
+  document.getElementById(id).style.display = "block";
   console.log(campoID.value);
+  connectBack(campoID.value,"unico")
   console.log("unico");
 }
 
-function abrirPopupBilDuplo(id) {
+async function abrirPopupBilDuplo(id) {
     document.getElementById(id).style.display = "block";
-    const campoID = document.querySelector("#campoBilheteRecarga");
+    let campoID = document.querySelector("#campoBilheteRecarga");
+    connectBack(campoID.value,"duplo")
     console.log(campoID.value);
     console.log("duplo");
 }
 
-function abrirPopupBil7(id) {
+async function abrirPopupBil7(id) {
     document.getElementById(id).style.display = "block";
-    const campoID = document.querySelector("#campoBilheteRecarga");
+    let campoID = document.querySelector("#campoBilheteRecarga");
     console.log(campoID.value);
+    connectBack(campoID.value,"7 dias")
     console.log("7 dias");
 }
 
-function abrirPopupBil30(id) {
+async function abrirPopupBil30(id) {
     document.getElementById(id).style.display = "block";
-    const campoID = document.querySelector("#campoBilheteRecarga");
+    let campoID = document.querySelector("#campoBilheteRecarga");
     console.log(campoID.value);
+    connectBack(campoID.value,"30 dias")
     console.log("30 dias");
 }
 
