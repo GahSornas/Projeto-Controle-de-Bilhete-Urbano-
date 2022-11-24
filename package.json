@@ -4,7 +4,8 @@
   "description": "back-end",
   "main": "app.js",
   "scripts": {
-    "main": "node app.js"
+    "main": "cd src && node app.js",
+    "mainN": "cd src && nodemon app.js"
   },
   "repository": {
     "type": "git",
