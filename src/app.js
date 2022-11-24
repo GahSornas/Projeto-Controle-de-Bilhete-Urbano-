@@ -4,12 +4,16 @@ const port = 8111;
 const oracledb = require('oracledb');
 const bodyParser = require('body-parser');
 const path = require('path');
+const temp = require('./temp.js')
+
+temp.sayHi();
 
 const dbCredentials = {
     user: 'PI',
     password: '123456',
     connectString: 'localhost:1521/xe'
 }
+
 
 
 app.use(express.static('./public'));
