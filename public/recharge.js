@@ -25,7 +25,6 @@ async function abrirPopup(id) {
   document.getElementById(id).style.display = "block";
 }
 
-
 async function abrirPopupBilUnico(id) {
   let campoID = document.querySelector("#campoBilheteRecarga");
   if(campoID == 0){

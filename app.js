@@ -62,8 +62,6 @@ async function seeID(dbConfig,ID) {
 
 
 
-
-
 async function run(ID) {
 
    let connection;
@@ -149,6 +147,8 @@ app.post('/generate',(req,res) => {
   console.log(res)
 })
 
+
+//Recarga
 async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
 
   let connection;

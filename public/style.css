@@ -97,7 +97,7 @@ a {
   border-radius: 5px;
   height: 40px;
   position: absolute;
-  left: 140px;
+  left: 150px;
 }
 
 .containerRecarga {
@@ -183,16 +183,9 @@ a {
 /* Page Utilizar Bilhete */
 #tituloUtilizarBilhete {
   position: absolute;
-  top: 30%;
+  top: 12%;
   left: 20%;
   font-size: x-large;
-}
-
-.divUtilizarBilhete {
-  position: absolute;
-  display: flex;
-  top: 38%;
-  left: 20%;
 }
 
 #campoBilhete {
@@ -202,6 +195,10 @@ a {
   background-color: #57cc99;
   border-radius: 5px;
   height: 75px;
+  position: absolute;
+  display: flex;
+  top: 9.6%;
+  left: 34%;
 }
 
 #btnUtilizarBilhete {
@@ -212,9 +209,27 @@ a {
   padding: 30px;
   border: none;
   position: absolute;
-  left: 330px;
+  left: 52%;
+  top: 9.5%;
 }
 #btnUtilizarBilhete:hover {
   background: #00ff91;
   transition: background 1s;
+}
+
+.todosBilhetes {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  top: 20%;
+  font-size: 20px;
+}
+
+.divBilhetesAtivos{
+  display: flex;
+}
+
+.divBilhetesAtivos button{
+  display: none;
 }
