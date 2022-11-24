@@ -3,7 +3,7 @@ const app = express();
 const port = 8111;
 const oracledb = require('oracledb');
 const bodyParser = require('body-parser');
-
+const path = require('path');
 
 const dbCredentials = {
     user: 'PI',
@@ -12,6 +12,7 @@ const dbCredentials = {
 }
 
 
+app.use(express.static('./public'));
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
@@ -19,7 +20,6 @@ app.use(express.json())
 app.use(express.urlencoded());
 
 
-app.use(express.static('public'))
 
 function generateID(){
   ID = Math.floor(Math.random() * 100000) + 1;
@@ -36,15 +36,11 @@ async function seeID(dbConfig,ID) {
     // Get a non-pooled connection
 
     connection = await oracledb.getConnection(dbConfig);
-
-
     const result = await connection.execute(
-      // The statement to execute
       `SELECT * from bilhete where id_bilhete = ${ID}`,
       );
-    
+
     return [result.rows[0][0],result.rows[0][1]];
-    
 
   } catch (err) {
     console.error(err);
@@ -104,7 +100,6 @@ async function run(ID) {
      }
    }
  }
-
 
 
 //Rotas//
@@ -173,6 +168,10 @@ async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
   }
 }
 
+
+
+
+
 app.post('/recharge', async (req,res) => {
   var id = req.body.id;
   var kindID = req.body.kindID;
@@ -213,6 +212,15 @@ app.post('/teste',(req,res) => {
   //console.log(res)
 })
 
+app.post('/utilizar',  async (req,res) => {
+  var id = req.body.id;
+  res.send({
+    id :  req.body.id
+  })
+  res = {
+    id: req.body.id
+  }
+})
 
 
 // seeID(dbCredentials,20314)
