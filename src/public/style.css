@@ -179,57 +179,49 @@ a {
   cursor: pointer;
 }
 
-
 /* Page Utilizar Bilhete */
-#tituloUtilizarBilhete {
-  position: absolute;
-  top: 12%;
-  left: 20%;
-  font-size: x-large;
+.divUtilizarBilhete {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
 }
 
 #campoBilhete {
-  font-size: larger;
+  font-size: 25px;
   border: 2.2px solid;
   padding: 20px;
   background-color: #57cc99;
   border-radius: 5px;
-  height: 75px;
-  position: absolute;
-  display: flex;
-  top: 9.6%;
-  left: 34%;
+  height: 70px;
 }
-
+#tituloUtilizarBilhete {
+  font-size: 25px;
+}
 #btnUtilizarBilhete {
   cursor: pointer;
   color: black;
   background-color: #57cc99;
   border-radius: 10px;
-  padding: 30px;
+  padding: 20px;
   border: none;
-  position: absolute;
-  left: 52%;
-  top: 9.5%;
+  height: 70px;
 }
 #btnUtilizarBilhete:hover {
   background: #00ff91;
   transition: background 1s;
 }
 
-.todosBilhetes {
-  display: flex;
+.divTodosBilhetes {
+  display: none;
   justify-content: space-around;
-  position: absolute;
   width: 100%;
-  top: 20%;
   font-size: 20px;
 }
 
-.divBilhetesAtivos{
+.divBilhetesAtivos {
   display: flex;
 }
 
-.divBilhetesAtivos button{
+.divBilhetesAtivos button {
   display: none;
 }
