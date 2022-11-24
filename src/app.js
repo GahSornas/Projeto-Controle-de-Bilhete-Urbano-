@@ -3,10 +3,7 @@ const app = express();
 const port = 8111;
 const oracledb = require('oracledb');
 const bodyParser = require('body-parser');
-const f = require(__dirname+ '/temp.js');
-
-console.log(f.add(4, 4));
-console.log(f.subtract(8, 4));
+const db = require(__dirname+ '/dbActions.js');
 
 
 
@@ -19,7 +16,6 @@ const dbCredentials = {
 
 
 app.use(express.static('./public'));
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json())
@@ -33,77 +29,6 @@ function generateID(){
   return ID;
 }
 
-
-async function seeID(dbConfig,ID) {
-
-  let connection;
-
-  try {
-    // Get a non-pooled connection
-
-    connection = await oracledb.getConnection(dbConfig);
-    const result = await connection.execute(
-      `SELECT * from bilhete where id_bilhete = ${ID}`,
-      );
-
-    return [result.rows[0][0],result.rows[0][1]];
-
-  } catch (err) {
-    console.error(err);
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }
-}
-
-
-
-
-async function run(ID) {
-
-   let connection;
- 
-   try {
-     connection = await oracledb.getConnection(dbCredentials);
- 
-     console.log("Successfully connected to Oracle Database");
-      /*TESTE*///ID = 1;
-
-    async function insertDB(ID){
-      try{
-        await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`);
-      }catch (err){
-        console.log(err);
-        ID = generateID();
-        insertDB(ID)
-      } 
-    }
-
-    console.log(ID);
-    insertDB(ID);
-     // Insert some data
-
-
-     connection.commit();
-
- 
-   } catch (err) {
-     console.error(err);
-   } finally {
-     if (connection) {
-       try {
-         await connection.close();
-        } catch (err) {
-         console.error(err);
-       }
-     }
-   }
- }
 
 
 //Rotas//
@@ -132,10 +57,8 @@ app.listen(port, () => {
 });
 
 
-app.post('/generate',(req,res) => {
-  ID = generateID();
-  console.log("ID:%i",ID);
-  run(ID);
+app.post('/generate',async (req,res) => {
+  ID = await db.run(dbCredentials);
   res.send({
     id : ID,
     message: "id criado"
@@ -177,17 +100,11 @@ async function insertRecarga(dbConfig,id_recarga,ID,kindID) {
 
 
 
-
 app.post('/recharge', async (req,res) => {
   var id = req.body.id;
   var kindID = req.body.kindID;
-  
-  id_generated = generateID(),
-  console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
-  
-  resAux = await insertRecarga(dbCredentials,id_generated,id,kindID);
-
-  console.log(resAux);
+  //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`) 
+  await db.insertRecarga(dbCredentials,id,kindID);
   //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
 
   res.status(200).send({
