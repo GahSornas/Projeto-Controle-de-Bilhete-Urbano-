@@ -3,10 +3,12 @@ const app = express();
 const port = 8111;
 const oracledb = require('oracledb');
 const bodyParser = require('body-parser');
-const path = require('path');
-const temp = require('./temp.js')
+const f = require(__dirname+ '/temp.js');
 
-temp.sayHi();
+console.log(f.add(4, 4));
+console.log(f.subtract(8, 4));
+
+
 
 const dbCredentials = {
     user: 'PI',
@@ -225,8 +227,3 @@ app.post('/utilizar',  async (req,res) => {
     id: req.body.id
   }
 })
-
-
-// seeID(dbCredentials,20314)
-// .then(res => console.log(res))
-
