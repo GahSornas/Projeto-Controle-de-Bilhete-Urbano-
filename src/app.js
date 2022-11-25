@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const port = 8111;
-const oracledb = require("oracledb");
-const bodyParser = require("body-parser");
-const db = require(__dirname + "/dbActions.js");
+const port = 3000;
+const oracledb = require('oracledb');
+const bodyParser = require('body-parser');
+const db = require(__dirname+ '/dbActions.js');
+
 
 const dbCredentials = {
   user: "PI",
@@ -37,14 +38,10 @@ app.get("/Relatorio", (req, res) => {
   res.sendFile(__dirname + "/public/indexRelatorio.html");
 });
 
-// app.get("/seeID",(req,res)=>{
-//   console.log(req)
-//   getDatabyID(req.params.ID)
-
-// })
 
 app.listen(port, () => {
   console.log("Servidor Rodando.");
+  console.log(`127.0.0.1:${port}`)
 });
 
 app.post("/generate", async (req, res) => {
@@ -62,34 +59,9 @@ app.post("/generate", async (req, res) => {
 });
 
 //Recarga
-async function insertRecarga(dbConfig, id_recarga, ID, kindID) {
-  let connection;
 
-  try {
-    connection = await oracledb.getConnection(dbConfig);
-    await connection.execute(
-      `insert into RECARGA values (${id_recarga},current_timestamp,${ID},'${kindID}')`
-    );
-    select = await connection.execute(
-      `select * from recarga where FK_BILHETE_id_bilhete = ${ID}`
-    );
-    connection.commit();
-    console.log("generated recarga");
-    return select;
-  } catch (err) {
-    console.error(err);
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }
-}
 
-app.post("/recharge", async (req, res) => {
+app.post('/recharge', async (req,res) => {
   var id = req.body.id;
   var kindID = req.body.kindID;
   //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
@@ -108,25 +80,28 @@ app.post("/recharge", async (req, res) => {
   };
 });
 
-app.post("/teste", (req, res) => {
-  console.log(req.body);
+})
+app.post('/utilize', async (req,res) => {
+  let id = req.body.id;
+  recarga = await db.seeID(dbCredentials,id);
+  console.log(recarga)
   res.send({
-    id: "r23r23",
-    message: "id criado",
-  });
-  res = {
-    id: "r23r23",
-    message: "id criado",
-  };
-  //console.log(res)
-});
+    recharges : recarga
+  })
+})
 
-app.post("/utilizar", async (req, res) => {
-  var id = req.body.id;
+
+
+app.post('/teste',(req,res) => {
+
+  console.log(req.body)
   res.send({
-    id: req.body.id,
+    id: "r23r23",
+    message: "id criado",
   });
   res = {
-    id: req.body.id,
-  };
-});
+    id : "r23r23",
+    message: "id criado"
+  }
+})
+
