@@ -225,7 +225,7 @@ a {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-#btnBilhetesAtivos{
+.btnBilhetesAtivos{
   background-color: #22577a;
   color: white;
   font-size: 18px;
@@ -234,7 +234,7 @@ a {
   border: none;
   cursor: pointer;
 }
-#btnBilhetesAtivos:hover{
+.btnBilhetesAtivos:hover{
   background-color: #0f2e42;
   transition: background 1s;
 }
@@ -249,7 +249,7 @@ a {
   flex-wrap: wrap;
   
 }
-#btnBilhetesDispniveis{
+.btnBilhetesDispniveis{
   background-color: #22577a;
   color: white;
   font-size: 18px;
@@ -258,7 +258,7 @@ a {
   border: none;
   cursor: pointer;
 }
-#btnBilhetesDispniveis:hover{
+.btnBilhetesDispniveis:hover{
   background-color: #0f2e42;
   transition: background 1s;
 }
