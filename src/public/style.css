@@ -174,7 +174,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content:  space-around;
-  height: 500px;
+  height: 35em;
 }
 
 .divUtilizarBilhete {
@@ -221,7 +221,7 @@ a {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  height: 390px;
+  height: 22em;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
@@ -244,10 +244,9 @@ a {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  height: 390px;
+  height: 22em;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  
 }
 .btnBilhetesDispniveis{
   background-color: #22577a;
