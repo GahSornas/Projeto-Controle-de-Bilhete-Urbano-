@@ -89,7 +89,7 @@ app.post('/recharge', async (req,res) => {
 
 })
 app.post('/utilize', async (req,res) => {
-  let id = req.body.id;
+  id = req.body.id;
   recarga = await db.seeID(dbCredentials,id);
   console.log(recarga)
   res.send({
