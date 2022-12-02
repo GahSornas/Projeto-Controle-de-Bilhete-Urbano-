@@ -1,0 +1,94 @@
+/* Page Utilizar Bilhete */
+.pageUtilizacao{
+  display: flex;
+  flex-direction: column;
+  justify-content:  space-around;
+  height: 35em;
+}
+
+.divUtilizarBilhete {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.divUtilizarBilhete h3 {
+  font-size: 25px;
+}
+
+#campoBilhete {
+  font-size: 25px;
+  border: 2.2px solid;
+  padding: 20px;
+  background-color: #57cc99;
+  border-radius: 5px;
+  height: 60px;
+  width: 250px;
+}
+
+#btnConsultarBilhete {
+  cursor: pointer;
+  color: black;
+  background-color: #57cc99;
+  border-radius: 10px;
+  padding: 20px;
+  border: none;
+  height: 60px;
+}
+#btnConsultarBilhete:hover {
+  background: #00ff91;
+  transition: background 1s;
+}
+
+.divTodosBilhetes {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.divBilhetesAtivos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 22em;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.btnBilhetesAtivos{
+  display: none;
+  background-color: #22577a;
+  color: white;
+  font-size: 18px;
+  padding: 22px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+.btnBilhetesAtivos:hover{
+  background-color: #0f2e42;
+  transition: background 1s;
+}
+
+.divBilhetesDisp{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 22em;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.btnBilhetesDispniveis{
+  background-color: #22577a;
+  color: white;
+  font-size: 18px;
+  padding: 22px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+.btnBilhetesDispniveis:hover{
+  background-color: #0f2e42;
+  transition: background 1s;
+}
