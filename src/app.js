@@ -25,16 +25,16 @@ function generateID() {
 
 //Rotas//
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/public/html/index.html");
 });
 app.get("/Recarga", (req, res) => {
-  res.sendFile(__dirname + "/public/indexRecarga.html");
+  res.sendFile(__dirname + "/public/html/indexRecarga.html");
 });
 app.get("/Utilizar", (req, res) => {
-  res.sendFile(__dirname + "/public/indexUtilizar.html");
+  res.sendFile(__dirname + "/public/html/indexUtilizar.html");
 });
 app.get("/Relatorio", (req, res) => {
-  res.sendFile(__dirname + "/public/indexRelatorio.html");
+  res.sendFile(__dirname + "/public/html/indexRelatorio.html");
 });
 
 app.listen(port, () => {
