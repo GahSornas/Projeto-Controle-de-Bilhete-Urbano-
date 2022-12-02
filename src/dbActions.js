@@ -80,14 +80,14 @@ async function seeID(dbConfig,ID) {
 
 
 
-  async function insertRecarga(dbConfig,ID,kindID) {
+  async function insertRecarga(dbConfig,ID,kindID,creditos) {
 
     let connection;
   
     try {
       id_recarga = generateID();  
       connection = await oracledb.getConnection(dbConfig);
-      await connection.execute(`insert into RECARGA values (${id_recarga},current_timestamp,${ID},'${kindID}')`);
+      await connection.execute(`insert into RECARGA values (${id_recarga},${ID},'${kindID}',${creditos},current_timestamp)`);
       //select = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete = ${ID}`);
       connection.commit();
       console.log("generated recarga")

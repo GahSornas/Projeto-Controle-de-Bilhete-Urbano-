@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const oracledb = require("oracledb");
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
 
@@ -61,14 +60,15 @@ app.post("/generate", async (req, res) => {
 app.post("/recharge", async (req, res) => {
   var id = req.body.id;
   var kindID = req.body.kindID;
-  //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
-  await db.insertRecarga(dbCredentials, id, kindID);
+  var credits = req.body.credits
+  await db.insertRecarga(dbCredentials, id, kindID,credits);
   //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
 
   res.status(200).send({
     message: "id received",
     id: id,
     kindID: kindID,
+    credits : credits
   });
   res = {
     message: "recarga feita",
