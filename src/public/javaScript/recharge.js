@@ -1,4 +1,4 @@
-async function connectBack(id,kindID){
+async function connectBack(id,kindID,credits){
   await fetch('/recharge',{
     method:'POST',
     headers : {
@@ -9,7 +9,8 @@ async function connectBack(id,kindID){
     (
       {
          id : id,
-         kindID : kindID
+         kindID : kindID,
+         credits : credits
       }
     )
   }
@@ -32,32 +33,36 @@ async function abrirPopupBilUnico(id) {
   }
   document.getElementById(id).style.display = "block";
   console.log(campoID.value);
-  connectBack(campoID.value,"unico")
+  connectBack(campoID.value,"unico", 1);
   console.log("unico");
+  console.log(1);
 }
 
 async function abrirPopupBilDuplo(id) {
     document.getElementById(id).style.display = "block";
     let campoID = document.querySelector("#campoBilheteRecarga");
-    connectBack(campoID.value,"duplo")
+    connectBack(campoID.value,"duplo", 2);
     console.log(campoID.value);
     console.log("duplo");
+    console.log(2);
 }
 
 async function abrirPopupBil7(id) {
     document.getElementById(id).style.display = "block";
     let campoID = document.querySelector("#campoBilheteRecarga");
     console.log(campoID.value);
-    connectBack(campoID.value,"7 dias")
+    connectBack(campoID.value,"7 dias", 1);
     console.log("7 dias");
+    console.log(1);
 }
 
 async function abrirPopupBil30(id) {
     document.getElementById(id).style.display = "block";
     let campoID = document.querySelector("#campoBilheteRecarga");
     console.log(campoID.value);
-    connectBack(campoID.value,"30 dias")
+    connectBack(campoID.value,"30 dias", 1);
     console.log("30 dias");
+    console.log(1);
 }
 
 function fecharPopup(id) {
