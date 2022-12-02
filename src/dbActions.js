@@ -16,7 +16,10 @@ async function seeID(dbConfig,ID) {
   
       connection = await oracledb.getConnection(dbConfig);
       const result = await connection.execute(
-        `select DATA_HORA_RECARGA from recarga where FK_BILHETE_id_bilhete = ${ID}`,
+        `SELECT tipo_bilhete, data_hora_utilizacao FROM RECARGA 
+        JOIN UTILIZACAO ON id_recarga=FK_RECARGA_id_recarga
+        JOIN BILHETE ON id_bilhete=FK_BILHETE_id_bilhete
+        WHERE bilhete.id_bilhete=${ID};`,
         );
       
         console.log(result)
