@@ -21,17 +21,19 @@
       <div class="divUtilizarBilhete">
         <h3>Digite seu código:</h3>
         <input type="text" id="campoBilhete" placeholder="XXXXX" required />
-        <button type="submit" id="btnConsultarBilhete" onclick="teste('btnBilhetesAtivos')">Consultar</button>
+        <button type="submit" id="btnConsultarBilhete">Consultar</button>
       </div>
       
       <div class="divTodosBilhetes">
 
         <div class="divBilhetesAtivos">
           <h3>Bilhetes Ativos</h3>
-          <button class="btnBilhetesAtivos">
-            BILHETE ÚNICO<br/>
-            30 minutos restantes
-          </button>
+          <ul id="ulBilhetesAtivos">
+            <button class="btnBilhetesAtivos">
+              BILHETE ÚNICO<br/>
+              30 minutos restantes
+            </button>
+          </ul>
           
           
           
