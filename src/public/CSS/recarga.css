@@ -1,98 +1,103 @@
 /* Page Recarga */
-.divIdRecarga {
-    position: absolute;
-    top: 70px;
-    left: 32%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  #campoBilheteRecarga {
-    font-size: larger;
-    border: 2.2px solid;
-    padding: 10px;
-    background-color: #57cc99;
-    border-radius: 5px;
-    height: 40px;
-    position: absolute;
-    left: 150px;
-  }
-  
-  .containerRecarga {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 90%;
-    width: 100%;
-    position: absolute;
-    top: 16.5%;
-  }
-  
-  .divRecarga {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .textoBilhete {
-    background-color: #abd2fa;
-    padding: 18px;
-    border-radius: 20px;
-    width: 950px;
-  }
-  
-  .btnRecarga {
-    cursor: pointer;
-    color: black;
-    background-color: #57cc99;
-    border-radius: 10px;
-    padding: 25px;
-    border: none;
-  }
-  .btnRecarga:hover {
-    background: #00ff91;
-    transition: background 1s;
-  }
-  
-  #tituloBilUnico {
-    position: absolute;
-    left: 3%;
-    top: 4%;
-  }
-  #tituloBilDuplo {
-    position: absolute;
-    left: 3%;
-    top: 24%;
-  }
-  #tituloBil7Dias {
-    position: absolute;
-    left: 3%;
-    top: 48%;
-  }
-  #tituloBil30Dias {
-    position: absolute;
-    left: 3%;
-    top: 70%;
-  }
-  
-  #popupRecarga {
-    position: absolute;
-    top: 40%;
-    left: 35%;
-    background-color: #57cc99;
-    padding: 50px;
-    border-radius: 40px;
-    display: none;
-  }
-  #h3PopupRecarga {
-    background-color: #57cc99;
-  }
-  #btnPopupRecarga {
-    background-color: #57cc99;
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
+
+.containerUtilizarBilhete {
+  display: flex;
+  justify-content: center;
+}
+.divUtilizarBilhete {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.divUtilizarBilhete h3 {
+  font-size: 22px;
+}
+#campoBilheteRecarga {
+  font-size: 25px;
+  border: 2.2px solid;
+  padding: 20px;
+  background-color: #57cc99;
+  border-radius: 5px;
+  height: 40px;
+  width: 250px;
+}
+
+.containerRecarga {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  top: 16.5%;
+}
+
+.divRecarga {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.textoBilhete {
+  background-color: #abd2fa;
+  padding: 18px;
+  border-radius: 20px;
+  width: 950px;
+}
+
+.btnRecarga {
+  cursor: pointer;
+  color: black;
+  background-color: #57cc99;
+  border-radius: 10px;
+  padding: 25px;
+  border: none;
+}
+.btnRecarga:hover {
+  background: #00ff91;
+  transition: background 1s;
+}
+
+#tituloBilUnico {
+  position: absolute;
+  left: 3%;
+  top: 4%;
+}
+#tituloBilDuplo {
+  position: absolute;
+  left: 3%;
+  top: 24%;
+}
+#tituloBil7Dias {
+  position: absolute;
+  left: 3%;
+  top: 48%;
+}
+#tituloBil30Dias {
+  position: absolute;
+  left: 3%;
+  top: 70%;
+}
+
+#popupRecarga {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  background-color: #57cc99;
+  padding: 50px;
+  border-radius: 40px;
+  display: none;
+}
+#h3PopupRecarga {
+  background-color: #57cc99;
+}
+#btnPopupRecarga {
+  background-color: #57cc99;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}

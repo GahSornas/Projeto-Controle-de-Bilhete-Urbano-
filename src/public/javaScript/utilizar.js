@@ -4,12 +4,19 @@
 
 let tipoBilhete;
 let tempoRestante;
+let pulaLinha = document.createElement("br");
 
 let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
 let bilheteAtivo = document.createElement("button");
-let pulaLinha = document.createElement("br");
+bilheteAtivo.classList.add("btnBilhetes");
 bilheteAtivo.appendChild(`${tipoBilhete}`);
 bilheteAtivo.appendChild(pulaLinha);
 bilheteAtivo.appendChild(`${tempoRestante}`);
-bilheteAtivo.classList.add("btnBilhetesAtivos");
 ulBilhetesAtivos.appendChild(bilheteAtivo);
+
+
+let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
+let bilheteDisponivel = document.createElement("button");
+bilheteDisponivel.classList.add("btnBilhetes");
+bilheteDisponivel.appendChild(`${tipoBilhete}`);
+ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
