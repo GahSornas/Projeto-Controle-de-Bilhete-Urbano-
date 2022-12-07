@@ -1,5 +1,10 @@
 /* Page Recarga */
-
+.pageRecarga {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 35em;
+}
 .containerUtilizarBilhete {
   display: flex;
   justify-content: center;
@@ -17,87 +22,74 @@
   font-size: 25px;
   border: 2.2px solid;
   padding: 20px;
-  background-color: #57cc99;
+  background-color: #2a7e66;
   border-radius: 5px;
   height: 40px;
   width: 250px;
 }
 
-.containerRecarga {
+.divTodasRecargas{
+  height: 85%;
+  display: flex;
+  justify-content: center;
+}
+
+.divTiposRecargas{
+  height: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  height: 90%;
-  width: 100%;
-  position: absolute;
-  top: 16.5%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-
-.divRecarga {
+.divTiposRecargas2{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  width: 100%;
+  height: 90%;
 }
 
-.textoBilhete {
-  background-color: #abd2fa;
-  padding: 18px;
+.btnRecarga{
+  background-color: #4e8391;
+  width: 480px;
+  height: 200px;
   border-radius: 20px;
-  width: 950px;
-}
-
-.btnRecarga {
-  cursor: pointer;
-  color: black;
-  background-color: #57cc99;
-  border-radius: 10px;
-  padding: 25px;
   border: none;
 }
-.btnRecarga:hover {
-  background: #00ff91;
+.tituloBilhete{
+  background-color: #4e8391;
+}
+.textoBilhete{
+  background-color: #4e8391;
+  color: #f0f0f0;
+  font-size: 18px;
+}
+
+.tituloBilhete:hover,
+.textoBilhete:hover,
+.btnRecarga:hover{
+  background-color: #345861;
   transition: background 1s;
 }
 
-#tituloBilUnico {
-  position: absolute;
-  left: 3%;
-  top: 4%;
-}
-#tituloBilDuplo {
-  position: absolute;
-  left: 3%;
-  top: 24%;
-}
-#tituloBil7Dias {
-  position: absolute;
-  left: 3%;
-  top: 48%;
-}
-#tituloBil30Dias {
-  position: absolute;
-  left: 3%;
-  top: 70%;
-}
-
-#popupRecarga {
+#popupRecarga{
+  display: none;
   position: absolute;
   top: 40%;
-  left: 35%;
-  background-color: #57cc99;
+  left: 40%;
+  background-color: #abd2fa;
   padding: 50px;
-  border-radius: 40px;
-  display: none;
+  border-radius: 20px;
 }
-#h3PopupRecarga {
-  background-color: #57cc99;
+#popupRecarga h3{
+  background-color: #abd2fa;
 }
-#btnPopupRecarga {
-  background-color: #57cc99;
+#popupRecarga button{
+  background-color: #abd2fa;
+  border: none;
   position: absolute;
   top: 20px;
-  right: 30px;
-  border: none;
+  right: 20px;
   font-size: 20px;
-  cursor: pointer;
 }

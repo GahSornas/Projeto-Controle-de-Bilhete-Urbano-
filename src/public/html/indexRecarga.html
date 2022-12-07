@@ -2,8 +2,8 @@
 <html lang="pt-br">
   <head>
     <title>Recarga</title>
-    <link rel="stylesheet" href="CSS/recarga.css"/>
-    <link rel="stylesheet" href="CSS/menu.css">
+    <link rel="stylesheet" href="CSS/recarga.css" />
+    <link rel="stylesheet" href="CSS/menu.css" />
   </head>
   <body>
     <header>
@@ -15,62 +15,69 @@
       </div>
     </header>
 
-    
-    <div class="containerUtilizarBilhete">
-      <div class="divUtilizarBilhete">
-        <h3>Digite seu código:</h3>
-        <input type="text" id="campoBilheteRecarga" placeholder="XXXXX" required />
-      </div>
-    </div>
-    
-    <div class="containerRecarga">
-      <h3 id="tituloBilUnico">BILHETE ÚNICO</h3>
-      <div class="divRecarga">
-        <p class="textoBilhete">
-          Dará ao usuário o direito utilizar o mesmo bilhete em quantos
-          transportes quiser, um período de 40 minutos.
-        </p>
-        <h3>R$5.00</h3>
-        <button class="btnRecarga" id="btnRecargaUnico" onclick="abrirPopupBilUnico('popupRecarga')">Comprar</button>
+    <section class="pageRecarga">
+      <div class="containerUtilizarBilhete">
+        <div class="divUtilizarBilhete">
+          <h3>Digite seu código:</h3>
+          <input
+            type="text"
+            id="campoBilheteRecarga"
+            placeholder="XXXXX"
+            required
+          />
+        </div>
       </div>
 
-      <h3 id="tituloBilDuplo">BILHETE DUPLO</h3>
-      <div class="divRecarga">
-        <p class="textoBilhete">
-          Para cada período de utilização do Bilhete duplo o usuário poderá
-          utilizar o mesmo bilhete em quantos transportes quiser, por um período
-          de 40 minutos.
-        </p>
-        <h3>R$8.00</h3>
-        <button class="btnRecarga" id="btnRecargaDuplo" onclick="abrirPopupBilDuplo('popupRecarga')">Comprar</button>
-      </div>
+      <div class="divTodasRecargas">
 
-      <h3 id="tituloBil7Dias">BILHETE 7 DIAS</h3>
-      <div class="divRecarga">
-        <p class="textoBilhete">
-          Este tipo de bilhete dará ao usuário o direito de utilizar o
-          transporte público quantas vezes quiser durante o período de 7 dias,
-          contados apartir da primeira utilização do bilhete.
-        </p>
-        <h3>R$60.00</h3>
-        <button class="btnRecarga" id="btnRecarga7" onclick="abrirPopupBil7('popupRecarga')">Comprar</button>
-      </div>
+        <div class="divTiposRecargas">
+          <div class="divTiposRecargas2">
+            
 
-      <h3 id="tituloBil30Dias">BILHETE 30 DIAS</h3>
-      <div class="divRecarga">
-        <p class="textoBilhete">
-          Este tipo de bilhete dará ao usuário o direito de utilizar o
-          transporte público quantas vezes quiser durante o período de 30 dias,
-          contados apartir da primeira utilização do bilhete.
-        </p>
-        <h3>R$245.00</h3>
-        <button
-          class="btnRecarga"
-          id="btnRecarga30"
-          onclick="abrirPopupBil30('popupRecarga')"
-        >
-          Comprar
-        </button>
+              <button class="btnRecarga" id="btnRecargaUnico" onclick="abrirPopupBilUnico('popupRecarga')">
+                <h1 class="tituloBilhete">BILHETE ÚNICO</h1>
+                <br>
+                <p class="textoBilhete">
+                  Dará ao usuário o direito utilizar o mesmo bilhete em quantos
+                  transportes quiser, um período de 40 minutos.
+                </p>
+              </button>
+
+              <button class="btnRecarga" id="btnRecargaDuplo" onclick="abrirPopupBilDuplo('popupRecarga')">
+                <h1 class="tituloBilhete">BILHETE DUPLO</h1>
+                <br>
+                <p class="textoBilhete">
+                  Para cada período de utilização do Bilhete duplo o usuário poderá
+                  utilizar o mesmo bilhete em quantos transportes quiser, por um período
+                  de 40 minutos.
+                </p>
+              </button>
+
+              <button class="btnRecarga" id="btnRecarga7" onclick="abrirPopupBil7('popupRecarga')">
+                <h1 class="tituloBilhete">BILHETE 7 DIAS</h1>
+                <br>
+                <p class="textoBilhete">
+                  Este tipo de bilhete dará ao usuário o direito de utilizar o
+                  transporte público quantas vezes quiser durante o período de 7 dias,
+                  contados apartir da primeira utilização do bilhete.
+                </p>
+              </button>
+
+              <button class="btnRecarga" id="btnRecarga30" onclick="abrirPopupBil30('popupRecarga')">
+                <h1 class="tituloBilhete">BILHETE 30 DIAS</h1>
+                <br>
+                <p class="textoBilhete">
+                  Este tipo de bilhete dará ao usuário o direito de utilizar o
+                  transporte público quantas vezes quiser durante o período de 30 dias,
+                  contados apartir da primeira utilização do bilhete.
+                </p>
+              </button>
+            
+          </div>
+        </div>
+
+      </div>
+    </section>
     <div id="popupRecarga">
       <h3 id="h3PopupRecarga">Recarga Efetuada</h3>
       <button id="btnPopupRecarga" onclick="fecharPopup('popupRecarga')">
