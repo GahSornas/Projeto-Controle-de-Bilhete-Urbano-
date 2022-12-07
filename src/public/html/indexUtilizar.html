@@ -14,39 +14,45 @@
         <a href="/Relatorio">Relatório</a>
       </div>
     </header>
-    <div class="topBox"></div>
     
-    <div class="pageUtilizacao">
+    <section class="pageUtilizacao">
 
-      <div class="divUtilizarBilhete">
-        <h3>Digite seu código:</h3>
-        <input type="text" id="campoBilhete" placeholder="XXXXX" required />
-        <button type="submit" id="btnConsultarBilhete" onclick="teste('btnBilhetesAtivos')">Consultar</button>
+      <div class="containerUtilizarBilhete">
+        <div class="divUtilizarBilhete">
+          <h3>Digite seu código:</h3>
+          <input type="text" id="campoBilhete" placeholder="XXXXX" required />
+          <button type="submit" id="btnConsultarBilhete">Consultar</button>
+        </div>
       </div>
-      
-      <div class="divTodosBilhetes">
+        
+        <div class="divTodosBilhetes">
+          
+          <div class="divBilhetes">
+            <h3>Bilhetes Ativos</h3>
 
-        <div class="divBilhetesAtivos">
-          <h3>Bilhetes Ativos</h3>
-          <button class="btnBilhetesAtivos">
-            BILHETE ÚNICO<br/>
-            30 minutos restantes
-          </button>
-          
-          
-          
+          <ul id="ulBilhetesAtivos">
+            <button class="btnBilhetes">
+              BILHETE ÚNICO<br/>
+              30 minutos restantes
+            </button>
+          </ul>
+
         </div>
         
-        <div class="divBilhetesDisp">
+        <div class="divBilhetes">
           <h3>Bilhetes Disponiveis</h3>
-          <button class="btnBilhetesDispniveis">
-            BILHETE 30 DIAS
-          </button>
+
+          <ul id="ulBilhetesDisponiveis">
+            <button class="btnBilhetes">
+              BILHETE 30 DIAS
+            </button>
+          </ul>
+          
         </div>
 
       </div>
 
-    </div>
+    </section>
 
     <script src="javaScript/utilizar.js"></script>
   </body>

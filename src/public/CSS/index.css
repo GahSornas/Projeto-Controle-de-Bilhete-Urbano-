@@ -1,36 +1,38 @@
 /* Page gerar bilhete */
 .textoAceite {
-    color: black;
-    text-align: justify;
-    position: absolute;
-    background-color: #abd2fa;
-    padding: 40px;
-    border-radius: 10px;
-    top: 35%;
-    right: 20%;
-    left: 20%;
-  }
-  
-  #btnGerarBilhete {
-    cursor: pointer;
-    color: black;
-    background-color: #57cc99;
-    border-radius: 10px;
-    padding: 30px;
-    border: none;
-    bottom: 60px;
-    right: 60px;
-    position: absolute;
-  }
-  #btnGerarBilhete:hover {
-    background: #00ff91;
-    transition: background 1s;
-  }
-  .idGerado {
-    position: absolute;
-    top: 75%;
-    left: 45.7%;
-    background-color: #abd2fa;
-    padding: 40px;
-    border-radius: 10px;
-  }
+  color: #000;
+  text-align: justify;
+  position: absolute;
+  background-color: #4e8391;
+  padding: 40px;
+  border-radius: 10px;
+  top: 31%;
+  right: 20%;
+  left: 20%;
+  font-size: 18px;
+}
+
+#btnGerarBilhete {
+  cursor: pointer;
+  color: #000;
+  background-color: #2a7e66;
+  border-radius: 10px;
+  padding: 30px;
+  border: none;
+  bottom: 60px;
+  right: 60px;
+  position: absolute;
+}
+#btnGerarBilhete:hover {
+  background: #4be0b6;
+  transition: background 1s;
+}
+.idGerado {
+  position: absolute;
+  top: 75%;
+  left: 45.7%;
+  background-color: #4e8391;
+  padding: 40px;
+  border-radius: 10px;
+  color: #000;
+}
