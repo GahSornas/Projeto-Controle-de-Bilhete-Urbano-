@@ -112,14 +112,15 @@ async function seeID(dbConfig,ID) {
   
     try {
       connection = await oracledb.getConnection(dbConfig);
-      let res = await connection.execute(`select tipo_bilhete, creditos from RECARGA where FK_BILHETE_id_bilhete=${ID}`);
-      let res1 = await connection.execute(`select tipo_bilhete, creditos,  data_hora_utilizacao from RECARGA
-      join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=73671`);
+      const res = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete=${ID}`);
+      const res1 = await connection.execute(`select * from RECARGA
+      join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=${ID}`);
       connection.commit();
+      //console.log(res)
       console.log(res.rows);
       console.log(res1.rows);
+      return [res.rows,res1.rows]
     } catch (err) {
-        //insertRecarga(dbConfig,id_recarga,ID,kindID);
         console.error(err);
     } finally {
       if (connection) {
@@ -131,4 +132,4 @@ async function seeID(dbConfig,ID) {
       }
     }
   }
-module.exports = {insertRecarga,run,seeID}
+module.exports = {insertRecarga,run,seeID,seeUtilize}
