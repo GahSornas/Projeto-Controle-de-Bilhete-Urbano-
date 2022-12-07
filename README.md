@@ -1,7 +1,11 @@
 # Projeto-Controle-de-Bilhete-Urbano-
 
 To run:
-node app.js
+npm run main
+
+or 
+
+npm run mainN
 
 
 default port is 8111
