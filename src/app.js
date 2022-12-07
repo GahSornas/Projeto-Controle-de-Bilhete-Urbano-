@@ -90,10 +90,20 @@ app.post("/utilize", async (req, res) => {
   // {
   //   console.log("empty array")
   // }
-  // res.send({
-  //   recharges: recarga[0],
-  //   utilizes : recarga[1]
-  // });
+  for(let i in recarga[0])
+  {
+    
+    for(let j in recarga[1])
+    {
+      if(recarga[i][1]===recarga[j][1]){
+        
+      }
+    }
+  }
+  res.send({
+    recharges: recarga[0],
+    utilizes : recarga[1]
+  });
 });
 
 app.post("/teste", (req, res) => {
