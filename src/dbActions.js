@@ -106,4 +106,30 @@ async function seeID(dbConfig,ID) {
     }
   }
 
-module.exports = {insertRecarga,run,seeID}
+  async function seeUtilize(dbConfig,ID) {
+
+    let connection;
+  
+    try {
+      connection = await oracledb.getConnection(dbConfig);
+      const res = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete=${ID}`);
+      const res1 = await connection.execute(`select * from RECARGA
+      join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=${ID}`);
+      connection.commit();
+      console.log(res.columns)
+      console.log(res.rows);
+      console.log(res1.rows);
+      return [res.rows,res1.rows]
+    } catch (err) {
+        console.error(err);
+    } finally {
+      if (connection) {
+        try {
+          await connection.close();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
+  }
+module.exports = {insertRecarga,run,seeID,seeUtilize}

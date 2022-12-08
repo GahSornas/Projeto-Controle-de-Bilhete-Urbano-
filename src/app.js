@@ -3,12 +3,17 @@ const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
+const morgan = require('morgan')
+
 
 const dbCredentials = {
   user: "PI",
   password: "123456",
   connectString: "localhost:1521/xe",
 };
+
+
+app.use(morgan('dev'))
 
 app.use(express.static("./public"));
 app.use(bodyParser.json());
@@ -82,10 +87,25 @@ app.post("/recharge", async (req, res) => {
 
 app.post("/utilize", async (req, res) => {
   let id = req.body.id;
-  recarga = await db.seeID(dbCredentials, id);
+  recarga = await db.seeUtilize(dbCredentials, id);
   console.log(recarga);
+  // if(recarga[1]==0)
+  // {
+  //   console.log("empty array")
+  // }
+  for(let i in recarga[0])
+  {
+    
+    for(let j in recarga[1])
+    {
+      if(recarga[i][1]===recarga[j][1]){
+        
+      }
+    }
+  }
   res.send({
-    recharges: recarga,
+    recharges: recarga[0],
+    utilizes : recarga[1]
   });
 });
 
