@@ -3,22 +3,15 @@
   <head>
     <title>Gerar Bilhete</title>
     <link rel="stylesheet" href="CSS/gerar.css" />
-    <link rel="stylesheet" href="CSS/menu.css" />
+    <link rel="stylesheet" href="CSS/base.css" />
   </head>
   <body>
-    <header>
-      <div class="menu">
-        <a href="/">Home</a>
-        <a href="/Gerar">Gerar Bilhete</a>
-        <a href="/Recarga">Recarga</a>
-        <a href="/Utilizar">Utilização</a>
-        <a href="/Relatorio">Relatório</a>
-      </div>
-    </header>
-
+    
+      <a href="/"><img class="imgHome" src="images/imgHome.png"></a>
+        
     <section class="pageGerarBilhete">
 
-      <h2>Clique no botão verde para gerar seu BILHETE</h2>
+      <h2>Clique em CONCORDO para gerar seu BILHETE</h2>
       <p class="textoAceite">
       Este bilhete é de uso pessoal e não poderá ser transferido ou usado por
       outras pessoas.
@@ -26,16 +19,18 @@
     
 
       <div>
-        <div id="divIdGerado">
+        <div id="popupIdGerado">
           <h1>Sucesso!! Agora você possui seu cartão único!</h1>
-          <h2>Código do cartão: </h2>
-          <h2 id="showID" class="idGerado"></h2>
+          <div class="divIdGerado">
+            <h2>Código do cartão: </h2>
+            <h2 id="showID" class="idGerado"></h2>
+            <a href="/Recarga">Próximo Passo</a>
+          </div>
         </div>
-        <button id="btnGerarBilhete" onclick="abrirPopup(divIdGerado)">
-          GERAR TICKET
+        <button id="btnGerarBilhete" onclick="abrirPopup(popupIdGerado)">
+          CONCORDO
         </button>
       </div>
-
 
     </section>
 

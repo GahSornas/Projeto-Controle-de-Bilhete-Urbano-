@@ -1,0 +1,41 @@
+:root{
+  --colorButton: #f58a07;
+  --colorBtnHover: #fab868;
+  --colorTextInButton: #000;
+
+  --elementoCentral: #084887;
+  --elementoCentralHover: #0d68c4;
+  --colorTextInElemCentral: #f0f0f0;
+
+  --colorTitulos: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #6d7679;
+}
+
+a {
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+}
+button {
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.imgHome{
+  width: 80px;
+  height: 80px;
+  background-color: #f58a07;
+  border-radius: 8px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
