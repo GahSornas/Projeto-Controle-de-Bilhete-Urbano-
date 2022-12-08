@@ -24,6 +24,7 @@ button {
   justify-content: space-around;
   padding: 5px;
   background-color: #2f3334;
+  height: 5em;
 }
 .menu a {
   font-size: 25px;
@@ -31,9 +32,13 @@ button {
   background-color: #258198;
   padding: 8px;
   border-radius: 25px;
-  z-index: 1;
+  width: 9em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .menu a:hover {
   background: #02c8fa;
   transition: background 1s;
 }
+

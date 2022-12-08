@@ -8,7 +8,8 @@
   <body>
     <header>
       <div class="menu">
-        <a href="/">Gerar Bilhete</a>
+        <a href="/">Home</a>
+        <a href="/Gerar">Gerar Bilhete</a>
         <a href="/Recarga">Recarga</a>
         <a href="/Utilizar">Utilização</a>
         <a href="/Relatorio">Relatório</a>
@@ -18,7 +19,7 @@
     <section class="pageRecarga">
       <div class="containerUtilizarBilhete">
         <div class="divUtilizarBilhete">
-          <h3>Digite seu código:</h3>
+          <h3>Insira seu cartão ou digite o código:</h3>
           <input
             type="text"
             id="campoBilheteRecarga"
@@ -38,8 +39,7 @@
                 <h1 class="tituloBilhete">BILHETE ÚNICO</h1>
                 <br>
                 <p class="textoBilhete">
-                  Dará ao usuário o direito utilizar o mesmo bilhete em quantos
-                  transportes quiser, um período de 40 minutos.
+                  Utilize em quantos transportes quiser durante 40 minutos
                 </p>
               </button>
 
@@ -47,9 +47,7 @@
                 <h1 class="tituloBilhete">BILHETE DUPLO</h1>
                 <br>
                 <p class="textoBilhete">
-                  Para cada período de utilização do Bilhete duplo o usuário poderá
-                  utilizar o mesmo bilhete em quantos transportes quiser, por um período
-                  de 40 minutos.
+                  Utilize em quantos transportes quiser em dois períodos de 40 minutos
                 </p>
               </button>
 
@@ -57,9 +55,7 @@
                 <h1 class="tituloBilhete">BILHETE 7 DIAS</h1>
                 <br>
                 <p class="textoBilhete">
-                  Este tipo de bilhete dará ao usuário o direito de utilizar o
-                  transporte público quantas vezes quiser durante o período de 7 dias,
-                  contados apartir da primeira utilização do bilhete.
+                  Poderá utilizar quantas vezes quiser durante 7 dias corridos
                 </p>
               </button>
 
@@ -67,9 +63,7 @@
                 <h1 class="tituloBilhete">BILHETE 30 DIAS</h1>
                 <br>
                 <p class="textoBilhete">
-                  Este tipo de bilhete dará ao usuário o direito de utilizar o
-                  transporte público quantas vezes quiser durante o período de 30 dias,
-                  contados apartir da primeira utilização do bilhete.
+                  Poderá utilizar quantas vezes quiser durante 30 dias corridos
                 </p>
               </button>
             
@@ -79,7 +73,7 @@
       </div>
     </section>
     <div id="popupRecarga">
-      <h3 id="h3PopupRecarga">Recarga Efetuada</h3>
+      <h3 id="h3PopupRecarga">Recarga Efetuada Com Sucesso!!</h3>
       <button id="btnPopupRecarga" onclick="fecharPopup('popupRecarga')">
         X
       </button>
