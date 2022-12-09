@@ -1,30 +1,35 @@
-async function connectBack(id) {
-  await fetch("/utilize", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      dataType: "json",
-    },
-    body: JSON.stringify({
-      id: id,
-    }),
-  })
-    .then((response) => response.json())
-    // .then(res => console.log(typeof res))
-    .then((response) => JSON.parse(response))
-    .then((res) => {
-      console.log(res);
+async function connectBack(id){
+    await fetch('/utilize',{
+      method:'POST',
+      headers : {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'dataType': 'json'
+      },
+      body : JSON.stringify
+      (
+        {
+           id : id,
+        }
+      )
+    }
+    )
+    .then(response => response.json())
+    .then(response => JSON.parse(JSON.stringify(response)))
+    .then(response=> 
+    {
+        console.log(response.avalibleIds)
+        console.log(response.activeIDS)
     })
-    // .then(response=>
+    // .then(response=> 
     // {
     //     for(let i in avalibleIds)
     //     {
     //         console.log(avalibleIds[i])
     //     }
     // })
-    .catch((error) => console.log(error));
-}
+    .catch(error => console.log(error))
+  }
 
 async function consulta() {
   let campoID = document.querySelector("#campoBilhete");
