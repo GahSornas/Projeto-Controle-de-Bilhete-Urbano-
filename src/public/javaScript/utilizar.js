@@ -1,18 +1,10 @@
-//function teste(id) {
-//  document.getElementById(id).style.display = "flex";
-//}
-
-async function consulta(){
-    let campoID = document.querySelector("#campoBilhete");
-    console.log(campoID.value);
-}
-
 async function connectBack(id){
     await fetch('/utilize',{
       method:'POST',
       headers : {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'dataType': 'json'
       },
       body : JSON.stringify
       (
@@ -22,10 +14,28 @@ async function connectBack(id){
       )
     }
     )
-    then(response => response.json())
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+    .then(response => response.json())
+    // .then(res => console.log(typeof res))
+    .then(response => JSON.parse(response))
+    .then(res => {
+        console.log(res)
+    })
+    // .then(response=> 
+    // {
+    //     for(let i in avalibleIds)
+    //     {
+    //         console.log(avalibleIds[i])
+    //     }
+    // })
+    .catch(error => console.log(error))
   }
+
+
+  async function consulta(){
+    let campoID = document.querySelector("#campoBilhete");
+    console.log(campoID.value);
+    connectBack(campoID.value)
+}
 
 
 let tipoBilhete;

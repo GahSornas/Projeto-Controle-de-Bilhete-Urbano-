@@ -89,15 +89,17 @@ app.post("/utilize", async (req, res) => {
   let id = req.body.id;
   recarga = await db.seeUtilize(dbCredentials, id);
   //console.log(recarga);
-  if(recarga[1]==0)
-  {
-    console.log("empty array")
-  }
+  // if(recarga[1]==0)
+  // {
+  //   console.log("empty array")
+  // }
+
+
   let avalibleIds = recarga[0];
   let activeIDS = recarga[1];
  
-  // console.log(avalibleIds);
-  // console.log(activeIDS)
+   console.log(avalibleIds);
+   console.log(activeIDS)
   
   for(let i in avalibleIds)
   {
@@ -125,6 +127,15 @@ app.post("/utilize", async (req, res) => {
     avalibleIds: avalibleIds,
     activeIDS : activeIDS
   });
+
+  // res = {
+  //   avalibleIds: avalibleIds,
+  //   activeIDS : activeIDS
+  // };
+    res = {
+      "message" :"uwu"
+    }
+
 });
 
 app.post("/teste", (req, res) => {
