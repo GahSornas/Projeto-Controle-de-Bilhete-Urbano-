@@ -15,18 +15,12 @@ async function connectBack(id){
     }
     )
     .then(response => response.json())
-    // .then(res => console.log(typeof res))
-    .then(response => JSON.parse(response))
-    .then(res => {
-        console.log(res)
+    .then(response => JSON.parse(JSON.stringify(response)))
+    .then(response=> 
+    {
+        console.log(response.avalibleIds)
+        console.log(response.activeIDS)
     })
-    // .then(response=> 
-    // {
-    //     for(let i in avalibleIds)
-    //     {
-    //         console.log(avalibleIds[i])
-    //     }
-    // })
     .catch(error => console.log(error))
   }
 
