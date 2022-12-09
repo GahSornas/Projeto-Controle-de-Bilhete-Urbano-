@@ -86,20 +86,23 @@ app.post("/utilize", async (req, res) => {
   let id = req.body.id;
   recarga = await db.seeUtilize(dbCredentials, id);
   console.log(recarga);
-  // if(recarga[1]==0)
-  // {
-  //   console.log("empty array")
-  // }
-  for(let i in recarga[0])
+  if(recarga[1]==0)
   {
-    
-    for(let j in recarga[1])
-    {
-      if(recarga[i][1]===recarga[j][1]){
-        
-      }
-    }
+    console.log("empty array")
   }
+
+  console.log(recarga[0][0])
+  console.log(recarga[1][0])
+  // for(let i in recarga[0])
+  // {
+    
+  //   for(let j in recarga[1])
+  //   {
+  //     if(recarga[i][1]===recarga[j][1]){
+  //       console.log("Utilize")
+  //     }
+  //   }
+  // }
   res.send({
     recharges: recarga[0],
     utilizes : recarga[1]

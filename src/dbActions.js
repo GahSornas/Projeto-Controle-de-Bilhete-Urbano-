@@ -115,6 +115,7 @@ async function seeID(dbConfig,ID) {
       const res = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete=${ID}`);
       const res1 = await connection.execute(`select * from RECARGA
       join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=${ID}`);
+      console.log(res1)
       connection.commit();
       console.log(res.columns)
       console.log(res.rows);
