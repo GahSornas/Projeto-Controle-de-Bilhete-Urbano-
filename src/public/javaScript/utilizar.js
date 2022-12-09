@@ -35,26 +35,26 @@ document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
-document.getElementById("btnConsultarBilhete").onclick = async function () {
-  //BILHETES ATIVOS
-  let tipoBilhete = "BILHETE DUPLO";
-  let tempoRestante = "30 min";
+// document.getElementById("btnConsultarBilhete").onclick = async function () {
+//   //BILHETES ATIVOS
+//   let tipoBilhete = "BILHETE DUPLO";
+//   let tempoRestante = "30 min";
 
-  let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
-  let bilheteAtivo = document.createElement("button");
-  bilheteAtivo.classList.add("btnBilhetes");
+//   let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
+//   let bilheteAtivo = document.createElement("button");
+//   bilheteAtivo.classList.add("btnBilhetes");
 
-  let h3TipoBilhete = document.createElement("h3");
-  h3TipoBilhete.innerHTML = tipoBilhete; 
-  bilheteAtivo.appendChild(h3TipoBilhete);
+//   let h3TipoBilhete = document.createElement("h3");
+//   h3TipoBilhete.innerHTML = tipoBilhete; 
+//   bilheteAtivo.appendChild(h3TipoBilhete);
 
-  let pTempoRestante = document.createElement("p");
-  pTempoRestante.innerHTML = tempoRestante;
-  bilheteAtivo.appendChild(pTempoRestante);
+//   let pTempoRestante = document.createElement("p");
+//   pTempoRestante.innerHTML = tempoRestante;
+//   bilheteAtivo.appendChild(pTempoRestante);
 
-  ulBilhetesAtivos.appendChild(bilheteAtivo);
+//   ulBilhetesAtivos.appendChild(bilheteAtivo);
 
-};
+// };
 
 function printBilhetesDisponiveis(h3TipoBilhete){
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
@@ -68,8 +68,9 @@ function printBilhetesDisponiveis(h3TipoBilhete){
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
 }
 
-document.getElementById("btnConsultarBilhete").onclick = async function () {
+document.getElementById("btnConsultarBilhete").onclick =  function () {
   let campoID = document.querySelector("#campoBilhete");
+  console.log("wuqwuqwuudqw")
   console.log(campoID.value);
   connectBack(campoID.value);
   
