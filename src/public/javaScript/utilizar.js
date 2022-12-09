@@ -2,9 +2,13 @@
 //  document.getElementById(id).style.display = "flex";
 //}
 
-async function consulta(){
-    let campoID = document.querySelector("#campoBilhete");
-    console.log(campoID.value);
+function consulta() {
+  let campoID = document.querySelector("#campoBilhete");
+  console.log(campoID.value);
+}
+
+function fecharPopup(id) {
+  document.getElementById(id).style.display = "none";
 }
 
 let tipoBilhete;
@@ -18,7 +22,6 @@ bilheteAtivo.appendChild(`${tipoBilhete}`);
 bilheteAtivo.appendChild(pulaLinha);
 bilheteAtivo.appendChild(`${tempoRestante}`);
 ulBilhetesAtivos.appendChild(bilheteAtivo);
-
 
 let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
 let bilheteDisponivel = document.createElement("button");

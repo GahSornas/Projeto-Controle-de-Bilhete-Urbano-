@@ -1,3 +1,9 @@
+
+async function consulta(){
+    let campoID = document.querySelector("#campoBilhete");
+    console.log(campoID.value);
+}
+
 let dataGeracao;
 let tipoRecarga;
 let dataRecarga;
@@ -28,7 +34,19 @@ h3DataRecarga.appendChild(dataRecarga);
 divInfoRecarga.appendChild(h3DataRecarga);
 
 let ulUtilizacao = document.createElement("ul");
-
+ulUtilizacao.id = 'ulUtilizacao';
 divRecargas.appendChild(ulUtilizacao);
 
+let divInfoUtilizacao = document.createElement("div");
+divInfoUtilizacao.classList.add("divInfoUtilizacao")
+ulUtilizacao.appendChild(divInfoUtilizacao);
 
+let h4Texto = document.createElement("h4");
+h4Texto.appendChild("Utilização:");
+divInfoUtilizacao.appendChild(h4Texto);
+let h4DataUtilizacao = document.createElement("h4");
+h4DataUtilizacao.appendChild(dataUtilizacao);
+divInfoUtilizacao.appendChild(h4DataUtilizacao);
+let h4HrUtilizacao = document.createElement("h4");
+h4HrUtilizacao.appendChild(hrUtilizacao);
+divInfoUtilizacao.appendChild(h4HrUtilizacao);

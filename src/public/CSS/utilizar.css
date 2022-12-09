@@ -89,3 +89,24 @@
   background-color: var(--elementoCentralHover);
   transition: background 1s;
 }
+
+#popupUtilizacao{
+  position: absolute;
+  display: none;
+  top: 45%;
+  left: 25%;
+  background-color: var(--colorPopup);
+  padding: 25px;
+  border-radius: 20px;
+}
+#popupUtilizacao button{
+  background-color: var(--colorPopup);
+  position: absolute;
+  border: none;
+  right: 10px;
+  top: 5px;
+  font-size: 18px;
+}
+#popupUtilizacao h2{
+  background-color: var(--colorPopup);
+}
