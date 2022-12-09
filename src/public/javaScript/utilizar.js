@@ -60,7 +60,6 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
 
   ulBilhetesAtivos.appendChild(bilheteAtivo);
 
-  
 };
 
 document.getElementById("btnConsultarBilhete").onclick = async function () {

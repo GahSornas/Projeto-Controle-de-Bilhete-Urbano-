@@ -12,8 +12,3 @@ document.getElementById("btnGerarBilhete").onclick = async function ()
 }; 
 //const header = document.getElementById("showID")
 
-// document.getElementById("btnGerarBilhete").onclick = async function (){
-//   document.getElementById("popupIdGerado").style.display = "block";
-//   let h2ShowID = document.querySelector("#showID");
-//   h2ShowID.innerHTML = 1234;
-// }
