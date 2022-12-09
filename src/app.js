@@ -87,24 +87,33 @@ app.post("/recharge", async (req, res) => {
 
 app.post("/utilize", async (req, res) => {
   let id = req.body.id;
-  recarga = await db.seeUtilize(dbCredentials, id);
-  
+  let recarga = await db.seeUtilize(dbCredentials, id);
 
   let avalibleIds = recarga[0];
   let activeIDS = recarga[1];
- 
-
+  let currentTime = recarga[2][0][0];
+  currentTime = new Date(currentTime)
+  //console.log(currentTime)
+  //let remainingTime = currentTime - activeIDS[1][]
   
+  console.log(activeIDS[0][2])
 
   for(let i in avalibleIds)
   {
     for(let j in activeIDS)
     {
+      activeIDS[j][2] = (currentTime - new Date(activeIDS[j][2]))
+      console.log(currentTime - new Date(activeIDS[j][2]))
       if(avalibleIds[i][0] === activeIDS[j][0])
       {
         avalibleIds.splice(i,1);
       }
     }
+  }
+
+  if(activeIDS[0][2] >2400000)
+  {
+    console.log('bilhete inválido')
   }
   
   // for(let i in activeIDS)
@@ -119,7 +128,7 @@ app.post("/utilize", async (req, res) => {
   // }
 
   console.log(avalibleIds);
-  console.log(activeIDS)
+  console.log(activeIDS);
 
   res.send({
     avalibleIds: avalibleIds,

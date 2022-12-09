@@ -61,7 +61,7 @@ async function seeID(dbConfig,ID) {
     //      insertDB(ID)
     //    } 
     //  }
- 
+      
     } catch (err) {
       console.error(err);
       run(dbCredentials)
@@ -115,13 +115,15 @@ async function seeID(dbConfig,ID) {
       const res = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete=${ID}`);
       const res1 = await connection.execute(`select FK_RECARGA_ID_RECARGA,tipo_bilhete,data_hora_utilizacao from RECARGA
       join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=${ID}`);
-      
+      const currentTime = await connection.execute(` 
+      SELECT systimestamp AS time FROM dual
+      `)
       //console.log(res1)
       connection.commit();
       //console.log(res.rows)
       //console.log(res.rows);
       //console.log(res1.rows);
-      return [res.rows,res1.rows]
+      return [res.rows,res1.rows,currentTime.rows]
     } catch (err) {
         console.error(err);
     } finally {
