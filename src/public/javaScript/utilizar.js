@@ -31,11 +31,6 @@ async function connectBack(id){
     .catch(error => console.log(error))
   }
 
-async function consulta() {
-  let campoID = document.querySelector("#campoBilhete");
-  console.log(campoID.value);
-  connectBack(campoID.value);
-}
 
 document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
@@ -62,10 +57,7 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
 
 };
 
-document.getElementById("btnConsultarBilhete").onclick = async function () {
-  //BILHETES DISPONIVEIS
-  let tipoBilhete = "BILHETE 30 DIAS";
-
+function printBilhetesDisponiveis(h3TipoBilhete){
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
@@ -75,4 +67,11 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
   bilheteDisponivel.appendChild(h3TipoBilhete);
 
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
+}
+
+document.getElementById("btnConsultarBilhete").onclick = async function () {
+  let campoID = document.querySelector("#campoBilhete");
+  console.log(campoID.value);
+  connectBack(campoID.value);
+  
 };
