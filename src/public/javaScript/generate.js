@@ -4,7 +4,7 @@ document.getElementById("btnGerarBilhete").onclick = async function () {
     .then((response) => response.json())
     .then(
       (response) =>
-        (document.getElementById("showID").innerHTML = response["id"])
+        (console.log(response))
     )
     .catch((error) => console.log(error));
 };

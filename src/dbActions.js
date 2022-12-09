@@ -110,16 +110,16 @@ async function seeID(dbConfig,ID) {
 
     let connection;
   
-    try {
-      connection = await oracledb.getConnection(dbConfig);
+    try {  connection = await oracledb.getConnection(dbConfig);
       const res = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete=${ID}`);
-      const res1 = await connection.execute(`select * from RECARGA
+      const res1 = await connection.execute(`select FK_RECARGA_ID_RECARGA,tipo_bilhete,data_hora_utilizacao from RECARGA
       join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=${ID}`);
-      console.log(res1)
+      
+      //console.log(res1)
       connection.commit();
-      console.log(res.columns)
-      console.log(res.rows);
-      console.log(res1.rows);
+      //console.log(res.rows)
+      //console.log(res.rows);
+      //console.log(res1.rows);
       return [res.rows,res1.rows]
     } catch (err) {
         console.error(err);
