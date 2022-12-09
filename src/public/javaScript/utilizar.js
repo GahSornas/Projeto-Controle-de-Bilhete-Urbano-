@@ -2,6 +2,11 @@
 //  document.getElementById(id).style.display = "flex";
 //}
 
+async function consulta(){
+    let campoID = document.querySelector("#campoBilhete");
+    console.log(campoID.value);
+}
+
 async function connectBack(id){
     await fetch('/utilize',{
       method:'POST',
