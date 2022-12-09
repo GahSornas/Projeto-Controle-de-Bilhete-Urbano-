@@ -8,4 +8,5 @@ document.getElementById("btnGerarBilhete").onclick = async function ()
     .then((res) =>document.getElementById("showID").innerHTML = res.id)      
     .catch((error) => console.log(error));
 }; 
+//const header = document.getElementById("showID")
 
