@@ -111,21 +111,16 @@ app.post("/utilize", async (req, res) => {
     }
   }
 
+  //when its 
+
+  let remainingTime = 2400000 - activeIDS[0][2];
+
+  console.log('Remaining time : %d',remainingTime);
   if(activeIDS[0][2] >2400000)
   {
-    console.log('bilhete inválido')
-  }
+    console.log('bilhete inválido');
+  } 
   
-  // for(let i in activeIDS)
-  // {
-    
-  //   // "2022-12-07T21:30:02.9281Z" //node.js
-  //   // "09-DEC-22 12.31.25.242000000 AM -03:00" //oracle db
-  //   let d =  activeIDS[i][2]
-  //   console.log(d)
-  //   d = new Date(toString(activeIDS[i][2]));
-  //   console.log(d)
-  // }
 
   console.log(avalibleIds);
   console.log(activeIDS);
