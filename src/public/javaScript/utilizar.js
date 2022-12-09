@@ -1,15 +1,46 @@
-//function teste(id) {
-//  document.getElementById(id).style.display = "flex";
-//}
+async function connectBack(id){
+    await fetch('/utilize',{
+      method:'POST',
+      headers : {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'dataType': 'json'
+      },
+      body : JSON.stringify
+      (
+        {
+           id : id,
+        }
+      )
+    }
+    )
+    .then(response => response.json())
+    // .then(res => console.log(typeof res))
+    .then(response => JSON.parse(response))
+    .then(res => {
+        console.log(res)
+    })
+    // .then(response=> 
+    // {
+    //     for(let i in avalibleIds)
+    //     {
+    //         console.log(avalibleIds[i])
+    //     }
+    // })
+    .catch(error => console.log(error))
+  }
 
-function consulta() {
-  let campoID = document.querySelector("#campoBilhete");
-  console.log(campoID.value);
+
+  async function consulta(){
+    let campoID = document.querySelector("#campoBilhete");
+    console.log(campoID.value);
+    connectBack(campoID.value)
 }
 
 function fecharPopup(id) {
   document.getElementById(id).style.display = "none";
 }
+
 
 let tipoBilhete;
 let tempoRestante;
