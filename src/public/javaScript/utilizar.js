@@ -54,7 +54,7 @@ function printBilhetesAtivos(tipoBilhete, tempoRestante) {
 
 };
 
-function printBilhetesDisponiveis(h3TipoBilhete){
+function printBilhetesDisponiveis(tipoBilhete){
   //BILHETES DISPONIVEIS
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
   let bilheteDisponivel = document.createElement("button");

@@ -46,7 +46,7 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
   divInfoUtilizacao.classList.add("divInfoUtilizacao");
   ulUtilizacao.appendChild(divInfoUtilizacao);
 
-  //
+  //inserir texto / 
   let h4Texto = document.createElement("h4");
   h4Texto.innerHTML = "Utilização:";
   divInfoUtilizacao.appendChild(h4Texto);
