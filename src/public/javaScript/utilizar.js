@@ -2,6 +2,27 @@
 //  document.getElementById(id).style.display = "flex";
 //}
 
+async function connectBack(id){
+    await fetch('/utilize',{
+      method:'POST',
+      headers : {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body : JSON.stringify
+      (
+        {
+           id : id,
+        }
+      )
+    }
+    )
+    then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+  }
+
+
 let tipoBilhete;
 let tempoRestante;
 let pulaLinha = document.createElement("br");
