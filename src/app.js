@@ -29,7 +29,10 @@ function generateID() {
 
 //Rotas//
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/html/index.html");
+  res.sendFile(__dirname + "/public/html/home.html");
+});
+app.get("/Gerar", (req, res) => {
+  res.sendFile(__dirname + "/public/html/indexGerar.html");
 });
 app.get("/Recarga", (req, res) => {
   res.sendFile(__dirname + "/public/html/indexRecarga.html");
