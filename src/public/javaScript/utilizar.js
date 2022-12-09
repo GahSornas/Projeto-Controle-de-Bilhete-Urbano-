@@ -21,32 +21,59 @@ async function connectBack(id){
         console.log(response.avalibleIds)
         console.log(response.activeIDS)
     })
+    // .then(response=> 
+    // {
+    //     for(let i in avalibleIds)
+    //     {
+    //         console.log(avalibleIds[i])
+    //     }
+    // })
     .catch(error => console.log(error))
   }
 
-
-  async function consulta(){
-    let campoID = document.querySelector("#campoBilhete");
-    console.log(campoID.value);
-    connectBack(campoID.value)
+async function consulta() {
+  let campoID = document.querySelector("#campoBilhete");
+  console.log(campoID.value);
+  connectBack(campoID.value);
 }
 
+document.getElementById("btnFecharPopup").onclick = function () {
+  document.getElementById("popupUtilizacao").style.display = "none";
+};
 
-let tipoBilhete;
-let tempoRestante;
-let pulaLinha = document.createElement("br");
+document.getElementById("btnConsultarBilhete").onclick = async function () {
+  //BILHETES ATIVOS
+  let tipoBilhete = "BILHETE DUPLO";
+  let tempoRestante = "30 min";
 
-let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
-let bilheteAtivo = document.createElement("button");
-bilheteAtivo.classList.add("btnBilhetes");
-bilheteAtivo.appendChild(`${tipoBilhete}`);
-bilheteAtivo.appendChild(pulaLinha);
-bilheteAtivo.appendChild(`${tempoRestante}`);
-ulBilhetesAtivos.appendChild(bilheteAtivo);
+  let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
+  let bilheteAtivo = document.createElement("button");
+  bilheteAtivo.classList.add("btnBilhetes");
 
+  let h3TipoBilhete = document.createElement("h3");
+  h3TipoBilhete.innerHTML = tipoBilhete;
+  bilheteAtivo.appendChild(h3TipoBilhete);
 
-let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
-let bilheteDisponivel = document.createElement("button");
-bilheteDisponivel.classList.add("btnBilhetes");
-bilheteDisponivel.appendChild(`${tipoBilhete}`);
-ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
+  let pTempoRestante = document.createElement("p");
+  pTempoRestante.innerHTML = tempoRestante;
+  bilheteAtivo.appendChild(pTempoRestante);
+
+  ulBilhetesAtivos.appendChild(bilheteAtivo);
+
+  
+};
+
+document.getElementById("btnConsultarBilhete").onclick = async function () {
+  //BILHETES DISPONIVEIS
+  let tipoBilhete = "BILHETE 30 DIAS";
+
+  let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
+  let bilheteDisponivel = document.createElement("button");
+  bilheteDisponivel.classList.add("btnBilhetes");
+
+  let h3TipoBilhete = document.createElement("h3");
+  h3TipoBilhete.innerHTML = tipoBilhete;
+  bilheteDisponivel.appendChild(h3TipoBilhete);
+
+  ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
+};
