@@ -5,8 +5,8 @@ document.getElementById("btnGerarBilhete").onclick = async function ()
   fetch("/generate", { method: "POST" })
     .then((response) => response.json())
     .then((res) => JSON.parse(JSON.stringify(res)))
-    //.then((res) =>document.getElementById("showID").innerHTML = res.id)
-    .then((res) =>console.log(res.id))
+    .then((res) =>document.getElementById("showID").innerHTML = res.id)
+    //.then((res) =>console.log(res.id))
       
     .catch((error) => console.log(error));
 }; 
