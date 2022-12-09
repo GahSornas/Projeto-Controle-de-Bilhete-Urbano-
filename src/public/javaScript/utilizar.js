@@ -36,11 +36,8 @@ document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
-document.getElementById("btnConsultarBilhete").onclick = async function () {
+function printBilhetesAtivos(tipoBilhete, tempoRestante) {
   //BILHETES ATIVOS
-  let tipoBilhete = "BILHETE DUPLO";
-  let tempoRestante = "30 min";
-
   let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
   let bilheteAtivo = document.createElement("button");
   bilheteAtivo.classList.add("btnBilhetes");
@@ -58,6 +55,7 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
 };
 
 function printBilhetesDisponiveis(h3TipoBilhete){
+  //BILHETES DISPONIVEIS
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
@@ -73,5 +71,5 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
   let campoID = document.querySelector("#campoBilhete");
   console.log(campoID.value);
   connectBack(campoID.value);
-  
+
 };
