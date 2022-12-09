@@ -7,6 +7,9 @@
   --elementoCentralHover: #0d68c4;
   --colorTextInElemCentral: #f0f0f0;
 
+  --colorPopup: #4ce0b3;
+  --colorTextInPopup: #000;
+
   --colorTitulos: #000;
 }
 
@@ -35,7 +38,7 @@ button {
   background-color: #f58a07;
   border-radius: 8px;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 8px;
+  left: 8px;
 }
 

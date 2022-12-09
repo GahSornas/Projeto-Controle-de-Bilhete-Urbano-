@@ -37,20 +37,20 @@
 }
 
 #popupIdGerado{
-  display: block;
+  display: none;
   position: absolute;
-  background-color: var(--elementoCentral);
+  background-color: var(--colorPopup);
   padding: 15px;
   border-radius: 10px;
 }
 #popupIdGerado h1,
 #popupIdGerado h2{
-  background-color: var(--elementoCentral);
-  color: var(--colorTextInElemCentral);
+  background-color: var(--colorPopup);
+  color: var(--colorTextInPopup);
 }
 .divIdGerado{
   display: flex;
-  background-color: var(--elementoCentral);
+  background-color: var(--colorPopup);
   align-items: center;
 }
 .divIdGerado a{

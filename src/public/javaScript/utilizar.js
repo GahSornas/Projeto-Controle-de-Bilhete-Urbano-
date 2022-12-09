@@ -2,6 +2,11 @@
 //  document.getElementById(id).style.display = "flex";
 //}
 
+async function consulta(){
+    let campoID = document.querySelector("#campoBilhete");
+    console.log(campoID.value);
+}
+
 let tipoBilhete;
 let tempoRestante;
 let pulaLinha = document.createElement("br");

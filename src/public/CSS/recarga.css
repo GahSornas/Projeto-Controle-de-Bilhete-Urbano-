@@ -79,29 +79,24 @@
   font-size: 18px;
 }
 
-.tituloBilhete:hover,
-.textoBilhete:hover,
-.btnRecarga:hover{
-  background-color: var(--elementoCentralHover);
-  transition: background 1s;
-}
+
 
 #popupRecarga{
   display: none;
   position: absolute;
   top: 40%;
   left: 32%;
-  background-color: var(--elementoCentral);
+  background-color: var(--colorPopup);
   padding: 60px;
   border-radius: 20px;
 }
 #popupRecarga h3{
-  background-color: var(--elementoCentral);
-  color: var(--colorTextInElemCentral);
+  background-color: var(--colorPopup);
+  color: var(--colorTextInPopup);
 }
 #popupRecarga button{
-  background-color: var(--elementoCentral);
-  color: var(--colorTextInElemCentral);
+  background-color: var(--colorPopup);
+  color: var(--colorTextInPopup);
   border: none;
   position: absolute;
   top: 20px;
