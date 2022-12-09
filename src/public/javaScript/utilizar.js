@@ -18,11 +18,12 @@ async function connectBack(id){
     .then(response => JSON.parse(JSON.stringify(response)))
     .then(response=> 
     {
-        // console.log(response.avalibleIds)
+        console.log(response.avalibleIds)
         // console.log(response.activeIDS)
         for(let i in response.avalibleIds)
         {
-            console.log(response.avalibleIds[0])
+            console.log(response.avalibleIds[0][2])
+            printBilhetesDisponiveis(response.avalibleIds[0][2])
         }
     })
 
@@ -68,8 +69,6 @@ function printBilhetesDisponiveis(tipoBilhete){
 
 document.getElementById("btnConsultarBilhete").onclick =  function () {
   let campoID = document.querySelector("#campoBilhete");
-  console.log("wuqwuqwuudqw")
-  console.log(campoID.value);
   connectBack(campoID.value);
 
 }
