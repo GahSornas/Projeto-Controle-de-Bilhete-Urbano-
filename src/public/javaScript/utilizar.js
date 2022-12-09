@@ -35,14 +35,11 @@ document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
-// document.getElementById("btnConsultarBilhete").onclick = async function () {
-//   //BILHETES ATIVOS
-//   let tipoBilhete = "BILHETE DUPLO";
-//   let tempoRestante = "30 min";
-
-//   let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
-//   let bilheteAtivo = document.createElement("button");
-//   bilheteAtivo.classList.add("btnBilhetes");
+function printBilhetesAtivos(tipoBilhete, tempoRestante) {
+  //BILHETES ATIVOS
+  let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
+  let bilheteAtivo = document.createElement("button");
+  bilheteAtivo.classList.add("btnBilhetes");
 
 //   let h3TipoBilhete = document.createElement("h3");
 //   h3TipoBilhete.innerHTML = tipoBilhete; 
@@ -57,6 +54,7 @@ document.getElementById("btnFecharPopup").onclick = function () {
 // };
 
 function printBilhetesDisponiveis(h3TipoBilhete){
+  //BILHETES DISPONIVEIS
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
@@ -73,5 +71,5 @@ document.getElementById("btnConsultarBilhete").onclick =  function () {
   console.log("wuqwuqwuudqw")
   console.log(campoID.value);
   connectBack(campoID.value);
-  
+
 };
