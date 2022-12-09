@@ -51,7 +51,7 @@ function printBilhetesAtivos(tipoBilhete, tempoRestante) {
 
 //   ulBilhetesAtivos.appendChild(bilheteAtivo);
 
-// };
+};
 
 function printBilhetesDisponiveis(h3TipoBilhete){
   //BILHETES DISPONIVEIS
@@ -72,4 +72,4 @@ document.getElementById("btnConsultarBilhete").onclick =  function () {
   console.log(campoID.value);
   connectBack(campoID.value);
 
-};
+}
