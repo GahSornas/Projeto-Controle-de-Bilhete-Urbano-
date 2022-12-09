@@ -103,26 +103,26 @@ app.post("/utilize", async (req, res) => {
     for(let j in activeIDS)
     {
       activeIDS[j][2] = (currentTime - new Date(activeIDS[j][2]))
-      console.log(currentTime - new Date(activeIDS[j][2]))
+      //console.log(currentTime - new Date(activeIDS[j][2]))
       if(avalibleIds[i][0] === activeIDS[j][0])
       {
         avalibleIds.splice(i,1);
+        //avalibleIds.push(activeIDS[j][0][0])
       }
     }
   }
 
-  //when its 
 
   let remainingTime = 2400000 - activeIDS[0][2];
 
   console.log('Remaining time : %d',remainingTime);
   if(activeIDS[0][2] >2400000)
   {
-    console.log('bilhete inválido');
+    // console.log('bilhete inválido');
   } 
-  
+  //switch (avalibleIds[])
 
-  console.log(avalibleIds);
+  //console.log(avalibleIds);
   console.log(activeIDS);
 
   res.send({

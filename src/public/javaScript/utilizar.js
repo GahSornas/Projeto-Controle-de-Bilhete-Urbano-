@@ -18,16 +18,15 @@ async function connectBack(id){
     .then(response => JSON.parse(JSON.stringify(response)))
     .then(response=> 
     {
-        console.log(response.avalibleIds)
-        console.log(response.activeIDS)
+        // console.log(response.avalibleIds)
+        // console.log(response.activeIDS)
+        for(let i in response.avalibleIds)
+        {
+            console.log(response.avalibleIds[0])
+        }
     })
-    // .then(response=> 
-    // {
-    //     for(let i in avalibleIds)
-    //     {
-    //         console.log(avalibleIds[i])
-    //     }
-    // })
+
+    
     .catch(error => console.log(error))
   }
 
@@ -51,7 +50,7 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
   bilheteAtivo.classList.add("btnBilhetes");
 
   let h3TipoBilhete = document.createElement("h3");
-  h3TipoBilhete.innerHTML = tipoBilhete;
+  h3TipoBilhete.innerHTML = tipoBilhete; 
   bilheteAtivo.appendChild(h3TipoBilhete);
 
   let pTempoRestante = document.createElement("p");
