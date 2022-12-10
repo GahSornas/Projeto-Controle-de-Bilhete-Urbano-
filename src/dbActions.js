@@ -19,7 +19,7 @@ async function seeID(dbConfig,ID) {
         `SELECT tipo_bilhete, data_hora_utilizacao FROM RECARGA 
         JOIN UTILIZACAO ON id_recarga=FK_RECARGA_id_recarga
         JOIN BILHETE ON id_bilhete=FK_BILHETE_id_bilhete
-        WHERE bilhete.id_bilhete=${ID};`,
+        WHERE bilhete.id_bilhete=${ID}`,
         );
       
         console.log(result)
@@ -120,9 +120,9 @@ async function seeID(dbConfig,ID) {
       `)
       //console.log(res1)
       connection.commit();
-      //console.log(res.rows)
-      //console.log(res.rows);
-      //console.log(res1.rows);
+      // console.log(res.rows)
+      // console.log(res1.rows);
+      // console.log(currentTime.rows);
       return [res.rows,res1.rows,currentTime.rows]
     } catch (err) {
         console.error(err);
