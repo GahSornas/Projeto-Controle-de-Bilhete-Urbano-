@@ -80,10 +80,8 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
 }
 
 function deleteTicket(){
-  let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
-  let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
-  let apagarBilhete = document.getElementsByClassName("btnBilhetes");
-
-  ulBilhetesDisponiveis.removeChild(apagarBilhete);
-  ulBilhetesAtivos.removeChild(apagarBilhete);
+  let apagarBilhete = document.querySelectorAll('.btnBilhetes');
+  apagarBilhete.forEach(btnBilhetes=>{
+    btnBilhetes.remove();
+  });
 }
