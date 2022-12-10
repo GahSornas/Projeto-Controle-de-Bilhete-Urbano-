@@ -30,15 +30,12 @@
 //     .catch(error => console.log(error))
 //   }
 
-document.getElementById("btnConsultarBilhete").onclick = function () {
-  let campoID = document.querySelector("#campoBilhete");
-  console.log(campoID.value);
-  connectBack(campoID.value);
-};
+// document.getElementById("btnConsultarBilhete").onclick =  async function () {
+//   let campoID = document.querySelector("#campoBilhete");
+//   console.log(campoID.value);
+//   connectBack(campoID.value);
+// };
 
-document.getElementById("btnFecharPopup").onclick = function () {
-  document.getElementById("popupUtilizacao").style.display = "none";
-};
 
 function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   //BILHETES ATIVOS
@@ -71,3 +68,8 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
 
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
 }
+
+
+document.getElementById("btnFecharPopup").onclick = function () {
+  document.getElementById("popupUtilizacao").style.display = "none";
+};
