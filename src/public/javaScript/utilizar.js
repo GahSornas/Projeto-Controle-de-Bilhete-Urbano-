@@ -22,8 +22,8 @@ async function connectBack(id){
         // console.log(response.activeIDS)
         for(let i in response.avalibleIds)
         {
-            console.log(response.avalibleIds[0][2])
-            printBilhetesDisponiveis(response.avalibleIds[0][2])
+            console.log(response.avalibleIds[i][2])
+            printBilhetesDisponiveis(response.avalibleIds[i][2])
         }
     })
 
@@ -67,8 +67,9 @@ function printBilhetesDisponiveis(tipoBilhete){
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
 }
 
-document.getElementById("btnConsultarBilhete").onclick =  function () {
+document.getElementById("btnConsultarBilhete").onclick =  async function () {
   let campoID = document.querySelector("#campoBilhete");
+  console.log(campoID.value)
   connectBack(campoID.value);
 
 }
