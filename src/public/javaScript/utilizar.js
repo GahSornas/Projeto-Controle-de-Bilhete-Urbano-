@@ -27,8 +27,8 @@ async function connectBack(id){
         }
     })
   }
-//     .catch(error => console.log(error))
-//   }
+  //   .catch(error => console.log(error))
+  // }
 
 document.getElementById("btnConsultarBilhete").onclick =  async function () {
   let campoID = await document.querySelector("#campoBilhete");
@@ -40,12 +40,14 @@ document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
+
 function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   //BILHETES ATIVOS
   let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
   let bilheteAtivo = document.createElement("button");
   bilheteAtivo.classList.add("btnBilhetes");
   bilheteAtivo.id = idBilhete;
+  bilheteAtivo.onclick = function(){idBilheteClicado(this.id)};
 
   //   let h3TipoBilhete = document.createElement("h3");
   //   h3TipoBilhete.innerHTML = tipoBilhete;
@@ -64,6 +66,7 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
   bilheteDisponivel.id = idBilhete;
+  bilheteAtivo.onclick = function(){idBilheteClicado(this.id)};
 
   let h3TipoBilhete = document.createElement("h3");
   h3TipoBilhete.innerHTML = tipoBilhete;
@@ -71,3 +74,6 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
 
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
 }
+
+
+

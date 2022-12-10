@@ -3,17 +3,28 @@
 //   console.log(campoID.value);
 // }
 
+// //estrutura dos prints //
+// printDataGeracao(dataGeracao)
+// for(let i in response.avalibleIds){
+//   printRecarga(tipoRecarga, dataRecarga)
+//   for(let i in response.avalibleIds){
+//     printUtilizacao(dataUtilizacao, hrUtilizacao)
+//   }
+// }
+
 document.getElementById("btnConsultarBilhete").onclick = async function () {
   let campoID = document.querySelector("#campoBilhete");
   console.log(campoID.value);
   connectBack(campoID.value);
 };
 
-function printHistorico(dataGeracao, tipoRecarga, dataRecarga, dataUtilizacao, hrUtilizacao) {
+function printDataGeracao(dataGeracao){
   //printar data de geração do bilhete
   let showDataGeracao = document.querySelector("#showDataGeracao");
   showDataGeracao.innerHTML = dataGeracao;
+}
 
+function printRecarga(tipoRecarga, dataRecarga) {
   //criação de div e inserção em ul existente
   let ulRecargas = document.querySelector("#ulRecargas");
   let divRecargas = document.createElement("div");
@@ -38,10 +49,15 @@ function printHistorico(dataGeracao, tipoRecarga, dataRecarga, dataUtilizacao, h
   h3DataRecarga.innerHTML = dataRecarga;
   divInfoRecarga.appendChild(h3DataRecarga);
 
-  //criação ul e div
+  //criação ulUtilizacao
   let ulUtilizacao = document.createElement("ul");
   ulUtilizacao.id = "ulUtilizacao";
   divRecargas.appendChild(ulUtilizacao);
+};
+
+function printUtilizacao(dataUtilizacao, hrUtilizacao){
+  //criação ul e div
+  let ulUtilizacao = document.getElementById("ulUtilizacao");
   let divInfoUtilizacao = document.createElement("div");
   divInfoUtilizacao.classList.add("divInfoUtilizacao");
   ulUtilizacao.appendChild(divInfoUtilizacao);
@@ -58,4 +74,4 @@ function printHistorico(dataGeracao, tipoRecarga, dataRecarga, dataUtilizacao, h
   let h4HrUtilizacao = document.createElement("h4");
   h4HrUtilizacao.innerHTML = hrUtilizacao;
   divInfoUtilizacao.appendChild(h4HrUtilizacao);
-};
+}
