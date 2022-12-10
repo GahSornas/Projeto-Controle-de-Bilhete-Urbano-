@@ -4,12 +4,12 @@
 // }
 
 document.getElementById("btnConsultarBilhete").onclick = async function () {
-  let dataGeracao = "22/10/22";
-  let tipoRecarga = "BILHETE 30 DIAS";
-  let dataRecarga = "30/11/22";
-  let dataUtilizacao = "5/12/22";
-  let hrUtilizacao = "18:30";
+  let campoID = document.querySelector("#campoBilhete");
+  console.log(campoID.value);
+  connectBack(campoID.value);
+};
 
+function printHistorico(dataGeracao, tipoRecarga, dataRecarga, dataUtilizacao, hrUtilizacao) {
   //printar data de geração do bilhete
   let showDataGeracao = document.querySelector("#showDataGeracao");
   showDataGeracao.innerHTML = dataGeracao;
@@ -46,7 +46,7 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
   divInfoUtilizacao.classList.add("divInfoUtilizacao");
   ulUtilizacao.appendChild(divInfoUtilizacao);
 
-  //inserir texto / 
+  //inserir texto / data / hora
   let h4Texto = document.createElement("h4");
   h4Texto.innerHTML = "Utilização:";
   divInfoUtilizacao.appendChild(h4Texto);
