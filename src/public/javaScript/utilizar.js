@@ -55,9 +55,11 @@ async function connectBack(id){
 
 
 document.getElementById("btnConsultarBilhete").onclick =  async function () {
+  
   let campoID =  document.querySelector("#campoBilhete");
   console.log(campoID.value);
   await connectBack(campoID.value);
+  deleteTicket();
 };
 
 
