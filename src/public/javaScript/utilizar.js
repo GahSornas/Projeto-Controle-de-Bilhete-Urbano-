@@ -1,74 +1,73 @@
-async function connectBack(id){
-    await fetch('/utilize',{
-      method:'POST',
-      headers : {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'dataType': 'json'
-      },
-      body : JSON.stringify
-      (
-        {
-           id : id,
-        }
-      )
-    }
-    )
-    .then(response => response.json())
-    .then(response => JSON.parse(JSON.stringify(response)))
-    .then(response=> 
-    {
-        console.log(response.avalibleIds)
-        // console.log(response.activeIDS)
-        for(let i in response.avalibleIds)
-        {
-            console.log(response.avalibleIds[0][2])
-            printBilhetesDisponiveis(response.avalibleIds[0][2])
-        }
-    })
+// async function connectBack(id){
+//     await fetch('/utilize',{
+//       method:'POST',
+//       headers : {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json',
+//         'dataType': 'json'
+//       },
+//       body : JSON.stringify
+//       (
+//         {
+//            id : id,
+//         }
+//       )
+//     }
+//     )
+//     .then(response => response.json())
+//     .then(response => JSON.parse(JSON.stringify(response)))
+//     .then(response=>
+//     {
+//         console.log(response.avalibleIds)
+//         // console.log(response.activeIDS)
+//         for(let i in response.avalibleIds)
+//         {
+//             console.log(response.avalibleIds[i][2])
+//             printBilhetesDisponiveis(response.avalibleIds[i][2],  response.avalibleIds[i])
+//         }
+//     })
 
-    
-    .catch(error => console.log(error))
-  }
+//     .catch(error => console.log(error))
+//   }
 
+document.getElementById("btnConsultarBilhete").onclick = function () {
+  let campoID = document.querySelector("#campoBilhete");
+  console.log(campoID.value);
+  connectBack(campoID.value);
+};
 
 document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
-function printBilhetesAtivos(tipoBilhete, tempoRestante) {
+function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   //BILHETES ATIVOS
   let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
   let bilheteAtivo = document.createElement("button");
   bilheteAtivo.classList.add("btnBilhetes");
+  bilheteAtivo.id = idBilhete;
 
-//   let h3TipoBilhete = document.createElement("h3");
-//   h3TipoBilhete.innerHTML = tipoBilhete; 
-//   bilheteAtivo.appendChild(h3TipoBilhete);
+  //   let h3TipoBilhete = document.createElement("h3");
+  //   h3TipoBilhete.innerHTML = tipoBilhete;
+  //   bilheteAtivo.appendChild(h3TipoBilhete);
 
-//   let pTempoRestante = document.createElement("p");
-//   pTempoRestante.innerHTML = tempoRestante;
-//   bilheteAtivo.appendChild(pTempoRestante);
+  //   let pTempoRestante = document.createElement("p");
+  //   pTempoRestante.innerHTML = tempoRestante;
+  //   bilheteAtivo.appendChild(pTempoRestante);
 
-//   ulBilhetesAtivos.appendChild(bilheteAtivo);
+  //   ulBilhetesAtivos.appendChild(bilheteAtivo);
+}
 
-};
-
-function printBilhetesDisponiveis(tipoBilhete){
+function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
   //BILHETES DISPONIVEIS
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
+  bilheteDisponivel.id = idBilhete;
 
   let h3TipoBilhete = document.createElement("h3");
   h3TipoBilhete.innerHTML = tipoBilhete;
   bilheteDisponivel.appendChild(h3TipoBilhete);
 
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
-}
-
-document.getElementById("btnConsultarBilhete").onclick =  function () {
-  let campoID = document.querySelector("#campoBilhete");
-  connectBack(campoID.value);
-
 }
