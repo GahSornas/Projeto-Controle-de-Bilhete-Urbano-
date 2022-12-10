@@ -53,15 +53,15 @@ function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   bilheteAtivo.id = idBilhete;
   bilheteAtivo.setAttribute("onclick", "idBilheteClicado(this.id)");
 
-  //   let h3TipoBilhete = document.createElement("h3");
-  //   h3TipoBilhete.innerHTML = tipoBilhete;
-  //   bilheteAtivo.appendChild(h3TipoBilhete);
+    let h3TipoBilhete = document.createElement("h3");
+    h3TipoBilhete.innerHTML = tipoBilhete;
+    bilheteAtivo.appendChild(h3TipoBilhete);
 
-  //   let pTempoRestante = document.createElement("p");
-  //   pTempoRestante.innerHTML = tempoRestante;
-  //   bilheteAtivo.appendChild(pTempoRestante);
+    let pTempoRestante = document.createElement("p");
+    pTempoRestante.innerHTML = tempoRestante;
+    bilheteAtivo.appendChild(pTempoRestante);
 
-  //   ulBilhetesAtivos.appendChild(bilheteAtivo);
+    ulBilhetesAtivos.appendChild(bilheteAtivo);
 }
 
 function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
@@ -77,4 +77,13 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
   bilheteDisponivel.appendChild(h3TipoBilhete);
 
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
+}
+
+function deleteTicket(){
+  let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
+  let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
+  let apagarBilhete = document.getElementsByClassName("btnBilhetes");
+
+  ulBilhetesDisponiveis.removeChild(apagarBilhete);
+  ulBilhetesAtivos.removeChild(apagarBilhete);
 }
