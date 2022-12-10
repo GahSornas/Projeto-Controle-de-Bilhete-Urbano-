@@ -44,15 +44,13 @@ async function seeID(dbConfig,ID) {
       // Get a non-pooled connection
   
       connection = await oracledb.getConnection(dbConfig);
-      const result = await connection.execute
+      console.log('utilize %d',FK_RECARGA_id_recarga)
+      await connection.execute
       (
         `INSERT INTO UTILIZACAO VALUES
         (${generateID()}, ${FK_RECARGA_id_recarga}, current_timestamp)`
-      );
-      
-        console.log(result)
-      return [result.rows[0]];
-  
+      ); 
+      connection.commit();
     } catch (err) {
       console.error(err);
     } finally {

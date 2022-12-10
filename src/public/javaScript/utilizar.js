@@ -14,8 +14,8 @@ async function utilizeID(FK_RECARGA_id_recarga){
     )
   }
   )
-  .then(response => response.json())
-  .then(response => console.log(response))
+  // .then(response => response.json())
+  // .then(response => console.log(response))
 }
 
 async function connectBack(id){
@@ -47,7 +47,7 @@ async function connectBack(id){
         }
         for(let i in response.activeIDS)
         {
-          console.log(response.activeIDS[i])
+          printBilhetesAtivos(response.activeIDS[i][1], 100000,response.activeIDS[i][0])
         }
     })
   }
@@ -56,10 +56,9 @@ async function connectBack(id){
 
 document.getElementById("btnConsultarBilhete").onclick =  async function () {
   
-  let campoID =  document.querySelector("#campoBilhete");
-  console.log(campoID.value);
-  await connectBack(campoID.value);
   deleteTicket();
+  let campoID =  document.querySelector("#campoBilhete");
+  await connectBack(campoID.value);
 };
 
 
@@ -67,8 +66,11 @@ document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
-function idBilheteClicado(idClicado){
-
+async function idBilheteClicado(idClicado){
+  console.log(idClicado);
+  await utilizeID(idClicado);
+  deleteTicket();
+  let campoID =  document.querySelector("#campoBilhete");
 }
 
 
