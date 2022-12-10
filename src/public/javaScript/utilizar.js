@@ -40,6 +40,10 @@ document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
+function idBilheteClicado(idClicado){
+  console.log(idClicado);
+}
+
 
 function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   //BILHETES ATIVOS
@@ -74,6 +78,3 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
 
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
 }
-
-
-
