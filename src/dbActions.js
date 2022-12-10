@@ -3,7 +3,6 @@ const oracledb = require('oracledb');
 
 function generateID(){
     ID = Math.floor(Math.random() * 100000) + 1;
-    //console.log("ID generated: ");
     return ID;
   }
 
@@ -21,6 +20,35 @@ async function seeID(dbConfig,ID) {
         JOIN BILHETE ON id_bilhete=FK_BILHETE_id_bilhete
         WHERE bilhete.id_bilhete=${ID}`,
         );
+      
+        console.log(result)
+      return [result.rows[0]];
+  
+    } catch (err) {
+      console.error(err);
+    } finally {
+      if (connection) {
+        try {
+          await connection.close();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
+  }
+  async function insertUtilize(dbConfig,FK_RECARGA_id_recarga){
+
+    let connection;
+  
+    try {
+      // Get a non-pooled connection
+  
+      connection = await oracledb.getConnection(dbConfig);
+      const result = await connection.execute
+      (
+        `INSERT INTO UTILIZACAO VALUES
+        (${generateID()}, ${FK_RECARGA_id_recarga}, current_timestamp)`
+      );
       
         console.log(result)
       return [result.rows[0]];
@@ -115,14 +143,11 @@ async function seeID(dbConfig,ID) {
       const res = await connection.execute(`select * from recarga where FK_BILHETE_id_bilhete=${ID}`);
       const res1 = await connection.execute(`select FK_RECARGA_ID_RECARGA,tipo_bilhete,data_hora_utilizacao from RECARGA
       join UTILIZACAO on id_recarga=FK_RECARGA_id_recarga where FK_BILHETE_id_bilhete=${ID}`);
-      const currentTime = await connection.execute(` 
+      const currentTime = await connection.execute(
+        ` 
       SELECT systimestamp AS time FROM dual
       `)
-      //console.log(res1)
       connection.commit();
-      // console.log(res.rows)
-      // console.log(res1.rows);
-      // console.log(currentTime.rows);
       return [res.rows,res1.rows,currentTime.rows]
     } catch (err) {
         console.error(err);
@@ -136,4 +161,4 @@ async function seeID(dbConfig,ID) {
       }
     }
   }
-module.exports = {insertRecarga,run,seeID,seeUtilize}
+module.exports = {insertRecarga,run,seeID,seeUtilize,insertUtilize}

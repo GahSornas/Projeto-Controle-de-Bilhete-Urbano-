@@ -87,8 +87,11 @@ app.post("/recharge", async (req, res) => {
 
 
 app.post("/utilizeID",async (req,res) => {
-  v
-
+  let FK_RECARGA_id_recarga = req.body.FK_RECARGA_id_recarga;
+  db.insertUtilize(dbCredentials,FK_RECARGA_id_recarga);
+  res ={
+    message : "utlização feita"
+  }
 })
 
 
