@@ -63,7 +63,7 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
   let ulBilhetesDisponiveis = document.querySelector("#ulBilhetesDisponiveis");
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
-  //bilheteDisponivel.id = idBilhete;
+  bilheteDisponivel.id = idBilhete;
 
   let h3TipoBilhete = document.createElement("h3");
   h3TipoBilhete.innerHTML = tipoBilhete;
