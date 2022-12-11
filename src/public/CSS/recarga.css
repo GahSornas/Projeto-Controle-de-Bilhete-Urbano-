@@ -69,6 +69,21 @@
   border: none;
   padding: 20px;
 }
+.btnRecarga h2{
+  background-color: var(--elementoCentral);
+  align-items: flex-end;
+  justify-content: end;
+}
+.divValorBilhete{
+  display: flex;
+  justify-content: end;
+  background-color: var(--elementoCentral);
+}
+.btnRecarga img{
+  background-color: var(--elementoCentral);
+  height: 30px;
+  
+}
 .tituloBilhete{
   background-color: var(--elementoCentral);
   color: var(--colorTextInElemCentral);
