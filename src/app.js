@@ -3,7 +3,8 @@ const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
-const morgan = require('morgan')
+const morgan = require('morgan');
+const { DATE } = require("oracledb");
 
 
 const dbCredentials = {
@@ -109,35 +110,42 @@ app.post("/utilize", async (req, res) => {
   let currentTime = recarga[2][0][0];
   currentTime = new Date(currentTime)
   //console.log(currentTime)
-  //let remainingTime = currentTime - activeIDS[1][]
-  
+ // let remainingTime = currentTime -  
+ // console.log(currentTime)
   // console.log(activeIDS[0][2])
-
-  for(let i in avalibleIds)
+  for(let i in activeIDS)
   {
-    for(let j in activeIDS)
+      let timeID = new Date(activeIDS[i][2]);
+      console.log("timeID : %d\ncurrentTime: %d",timeID,currentTime);
+      console.log(activeIDS[i])
+      //timeID = (currentTime - timeID)/(1000 *60);
+      console.log(" current time: " + timeID);
+      switch(activeIDS[i][1]){
+        case '7 dias':
+          timeID = (currentTime - timeID)/(1000*60*24);
+          timeID = timeID.toFixed()
+          console.log("timeID : %d",timeID);
+          break;
+      }
+
+  }
+  if(activeIDS != 0 || avalibleIds !=0){
+    for(let i in avalibleIds)
     {
-      //activeIDS[j][2] = (currentTime - new Date(activeIDS[j][2]))
-      //console.log(currentTime - new Date(activeIDS[j][2]))
-      if(avalibleIds[i][0] === activeIDS[j][0])
+      for(let j in activeIDS)
       {
-        avalibleIds.splice(i,1);
-        //avalibleIds.push(activeIDS[j][0][0])
+        if(avalibleIds[i][0] === activeIDS[j][0])
+        {
+          avalibleIds.splice(i,1);
+        }
       }
     }
   }
 
 
-  // let remainingTime = 2400000 - activeIDS[0][2];
 
-  // console.log('Remaining time : %d',remainingTime);
-  // if(activeIDS[0][2] >2400000)
-  // {
-    // console.log('bilhete inválido');
-  // } 
-  //switch (avalibleIds[])
 
-  //console.log(avalibleIds);
+
   console.log(activeIDS);
 
   res.send({
