@@ -1,14 +1,75 @@
+async function connectBack(FK_BILHETE_id_bilhete){
+  await fetch('/report',{
+    method:'POST',
+    headers : {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body : JSON.stringify
+    (
+      {
+        FK_BILHETE_id_bilhete : FK_BILHETE_id_bilhete
+      }
+    )
+  }
+  )
+    .then(response => response.json())
+    .then(response => JSON.parse(JSON.stringify(response)))
+    .then(res => res.utilizes)
+    .then(res => {
+      printDataGeracao(getonlydate(res[0][0]));
+      for(let i in res)
+      {
+        printRecarga(res[i][1],getonlydate(res[i][2]))
+
+        for(let j in res[i]){
+           printUtilizacao(getonlydate(res[i][3]),getHoursandMinutea(res[i][3]))
+        }
+        //printUtilizacao(getonlydate(res[i][3]),getHoursandMinutea(res[i][3]));
+        console.log("get only date :"+ getonlydate(res[i][3]) + "hours :" +getHoursandMinutea(res[i][3]))
+      }
+    })
+    .catch(error => console.log(error))
+}
+
+function getHoursandMinutea(data)
+{
+  data = new Date(data)
+  var hh = data.getHours();
+  var mm = data.getMinutes();
+  data = hh + ':' + mm;
+  return data;
+}
+
+
+function getonlydate(today)
+{
+  today = new Date(today)
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+   var today = dd + '/' + mm + '/' + yyyy;
+  return today;
+}
+
 // async function consulta() {
-//   let campoID = document.querySelector("#campoBilhete");
+//   let campoID  =document.querySelector("#campoBilhete");
 //   console.log(campoID.value);
 // }
 
 // //estrutura dos prints //
-// printDataGeracao(dataGeracao)
-// for(let i in response.avalibleIds){
-//   printRecarga(tipoRecarga, dataRecarga)
+// printDataGeracao(apenas 0 data)
+// for(let i in response.avalibleIds)
+//   {
+//   printRecarga(1, 2 data)
 //   for(let i in response.avalibleIds){
-//     printUtilizacao(dataUtilizacao, hrUtilizacao)
+//     printUtilizacao(3 data, 3 hora)
 //   }
 // }
 

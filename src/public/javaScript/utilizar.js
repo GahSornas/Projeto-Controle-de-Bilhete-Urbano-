@@ -45,9 +45,13 @@ async function connectBack(id){
             console.log(response.avalibleIds[i][2],response.avalibleIds[i][0])
             printBilhetesDisponiveis(response.avalibleIds[i][2],response.avalibleIds[i][0]);
         }
+
+
+
         for(let i in response.activeIDS)
         {
           console.log(response.activeIDS[i]);
+          
           // 0: 24688
           // ​
           // 1: "7 dias"

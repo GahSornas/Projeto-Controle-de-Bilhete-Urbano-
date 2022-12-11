@@ -59,8 +59,7 @@ app.post("/generate", async (req, res) => {
     id: ID,
     message: "id criado",
   };
-  // console.log("RES:");
-  // console.log(res);
+
 });
 
 //Recarga
@@ -70,7 +69,6 @@ app.post("/recharge", async (req, res) => {
   var kindID = req.body.kindID;
   var credits = req.body.credits
   await db.insertRecarga(dbCredentials, id, kindID,credits);
-  //console.log(`insert into recarga values (${id_generated},current_timestamp,${id},'${kindID}');`)
 
   res.status(200).send({
     message: "id received",
@@ -108,11 +106,11 @@ app.post("/utilize", async (req, res) => {
   let activeIDS = recarga[1];
   let currentTime = recarga[2][0][0];
 
-
+ 
   try{
     for(let i in avalibleIds)
       {
-        for(let j in activeIDS)
+         for(let j in activeIDS)
         {
   
           if(avalibleIds[i][0] === activeIDS[j][0])
@@ -121,10 +119,44 @@ app.post("/utilize", async (req, res) => {
           }
         }
       }
+
   }catch(err){
     console.log(err)
   }
-  //console.log(`AVALIBLE IDS:${avalibleIds}\nactiveIDS : ${activeIDS}\ncurrentTime : ${currentTime}`)
+
+
+  try{
+    for(let i  in activeIDS)
+    {
+      //console.log(activeIDS[i])
+      for(let j in activeIDS)
+      {
+        if((activeIDS[i][0] === activeIDS[j][0]) && i!==j)
+        {
+          console.log(activeIDS[i]);
+          console.log(activeIDS[j]);
+          activeIDS.splice(i,1);
+        }
+      }
+    }
+    for(let i  in activeIDS)
+    {
+      //console.log(activeIDS[i])
+      for(let j in activeIDS)
+      {
+        if((activeIDS[i][0] === activeIDS[j][0]) && i!==j)
+        {
+          console.log(activeIDS[i]);
+          console.log(activeIDS[j]);
+          activeIDS.splice(i,1);
+        }
+      }
+    }
+  }catch{
+
+  }
+
+
   currentTime = new Date(currentTime)
   for(let i in activeIDS)
   {
@@ -133,7 +165,7 @@ app.post("/utilize", async (req, res) => {
       //console.log(activeIDS[i])
       
       //timeID = (currentTime - timeID)/(1000 *60);
-      console.log(" current time: " + timeID);
+     // console.log(" current time: " + timeID);
       switch(activeIDS[i][1]){
         case '7 dias':
           timeID = (currentTime - timeID)/(1000*60*60*2400);
@@ -208,6 +240,17 @@ app.post("/utilize", async (req, res) => {
   };
 
 });
+
+app.post("/report", async (req,res) => {
+  FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
+  let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
+  res.send({
+    utilizes : result
+  })
+  res ={
+    utilizes : result
+  }
+})
 
 app.post("/teste", (req, res) => {
   console.log(req.body);

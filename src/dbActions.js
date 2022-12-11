@@ -49,6 +49,11 @@ async function seeID(dbConfig,ID) {
       (
         `INSERT INTO UTILIZACAO VALUES
         (${generateID()}, ${FK_RECARGA_id_recarga}, current_timestamp)`
+        
+      ); 
+      await connection.execute
+      (
+        `UPDATE RECARGA SET creditos=(creditos-1) WHERE id_recarga=${FK_RECARGA_id_recarga}`
       ); 
       connection.commit();
     } catch (err) {
@@ -78,16 +83,7 @@ async function seeID(dbConfig,ID) {
         await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`);
         connection.commit();
         return ID;
-    //  async function insertDB(ID){
-    //    try{
-    //      await connection.execute(`insert into BILHETE values (${ID},current_timestamp)`);
-    //    }catch (err){
-    //      console.log(err);
-    //      ID = generateID();e
-    //      insertDB(ID)
-    //    } 
-    //  }
-      
+              
     } catch (err) {
       console.error(err);
       run(dbCredentials)
@@ -159,4 +155,31 @@ async function seeID(dbConfig,ID) {
       }
     }
   }
-module.exports = {insertRecarga,run,seeID,seeUtilize,insertUtilize}
+
+
+  async function report(dbConfig,FK_BILHETE_id_bilhete) {
+
+    let connection;
+  
+    try {  
+      connection = await oracledb.getConnection(dbConfig);
+      let res = await connection.execute(`select data_hora_geracao, tipo_bilhete, data_hora_recarga, data_hora_utilizacao from BILHETE
+      JOIN RECARGA on id_bilhete=FK_BILHETE_id_bilhete
+      JOIN UTILIZACAO on id_recarga=FK_RECARGA_id_recarga WHERE FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`);
+      connection.commit();
+      return res.rows;
+    } catch (err) {
+        console.error(err);
+    } finally {
+      if (connection) {
+        try {
+          await connection.close();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
+  }
+
+
+module.exports = {insertRecarga,run,seeID,seeUtilize,insertUtilize,report}
