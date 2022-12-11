@@ -62,10 +62,6 @@ document.getElementById("btnConsultarBilhete").onclick =  async function () {
 };
 
 
-document.getElementById("btnFecharPopup").onclick = function () {
-  document.getElementById("popupUtilizacao").style.display = "none";
-};
-
 async function idBilheteClicado(idClicado){
   console.log(idClicado);
   await utilizeID(idClicado);
@@ -114,3 +110,10 @@ function deleteTicket() {
   });
 }
   
+document.querySelectorAll(".btnBilhetes").onclick = function(){
+  document.getElementById("popupUtilizacao").style.display = "block";
+}
+
+document.getElementById("btnFecharPopup").onclick = function () {
+  document.getElementById("popupUtilizacao").style.display = "none";
+};
