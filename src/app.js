@@ -4,7 +4,6 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
 const morgan = require('morgan');
-const { DATE } = require("oracledb");
 
 
 const dbCredentials = {
@@ -109,6 +108,22 @@ app.post("/utilize", async (req, res) => {
   let activeIDS = recarga[1];
   let currentTime = recarga[2][0][0];
 
+
+  try{
+    for(let i in avalibleIds)
+      {
+        for(let j in activeIDS)
+        {
+  
+          if(avalibleIds[i][0] === activeIDS[j][0])
+          {
+            avalibleIds.splice(i,1);
+          }
+        }
+      }
+  }catch(err){
+    console.log(err)
+  }
   //console.log(`AVALIBLE IDS:${avalibleIds}\nactiveIDS : ${activeIDS}\ncurrentTime : ${currentTime}`)
   currentTime = new Date(currentTime)
   for(let i in activeIDS)
@@ -121,40 +136,66 @@ app.post("/utilize", async (req, res) => {
       console.log(" current time: " + timeID);
       switch(activeIDS[i][1]){
         case '7 dias':
-          timeID = (currentTime - timeID)/(1000*60*24);
+          timeID = (currentTime - timeID)/(1000*60*60*2400);
           timeID = timeID.toFixed(2)
+          if(timeID > 7)
+          {
+            console.log("bilhete inválido");
+            break;
+          }
           console.log("timeID : %d",timeID);
+          activeIDS[i].push(timeID);
           break;
         case '30 dias':
-          timeID = (currentTime - timeID)/(1000*60*24);
+          timeID = (currentTime - timeID)/(1000*60*24*60*2400);
           timeID = timeID.toFixed(2)
+          if(timeID > 30)
+          {
+            activeIDS.splice(i,1);
+            break;
+          }
+          activeIDS[i].push(timeID);
           console.log("timeID : %d",timeID);
           break;
-      }
+        case 'unico':
+          timeID = (currentTime - timeID)/(1000*60*40);
+          timeID = timeID.toFixed(2)
+          if(timeID > 40)
+          {
+            activeIDS.splice(i,1);
+            break;
+          }
+          activeIDS[i].push(timeID);
+          console.log(timeID)
 
+          break;
+        case 'duplo':
+          (currentTime - timeID)/(1000*60*40);
+          break;          
+      }
   }
 
-try{
-  for(let i in avalibleIds)
-    {
-      for(let j in activeIDS)
-      {
-        if(avalibleIds[i][0] === activeIDS[j][0])
-        {
-          avalibleIds.splice(i,1);
-        }
-      }
-    }
-}catch(err){
-  console.log(err)
-}
+// try{
+//   for(let i in avalibleIds)
+//     {
+//       for(let j in activeIDS)
+//       {
+
+//         if(avalibleIds[i][0] === activeIDS[j][0])
+//         {
+//           avalibleIds.splice(i,1);
+//         }
+//       }
+//     }
+// }catch(err){
+//   console.log(err)
+// }
   
 
 
 
 
 
-  //console.log(activeIDS);
 
   res.send({
     avalibleIds: avalibleIds,
