@@ -122,8 +122,12 @@ app.post("/utilize", async (req, res) => {
       switch(activeIDS[i][1]){
         case '7 dias':
           timeID = (currentTime - timeID)/(1000*60*24);
-          timeID = timeID.toFixed()
-
+          timeID = timeID.toFixed(2)
+          console.log("timeID : %d",timeID);
+          break;
+        case '30 dias':
+          timeID = (currentTime - timeID)/(1000*60*24);
+          timeID = timeID.toFixed(2)
           console.log("timeID : %d",timeID);
           break;
       }
@@ -140,7 +144,6 @@ try{
           avalibleIds.splice(i,1);
         }
       }
-      if(activeIDS !== undefined && avalibleIds !==undefined)  throw "undefinied variables";
     }
 }catch(err){
   console.log(err)
