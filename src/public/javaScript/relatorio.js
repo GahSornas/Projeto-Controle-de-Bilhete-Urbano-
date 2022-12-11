@@ -75,3 +75,10 @@ function printUtilizacao(dataUtilizacao, hrUtilizacao){
   h4HrUtilizacao.innerHTML = hrUtilizacao;
   divInfoUtilizacao.appendChild(h4HrUtilizacao);
 }
+
+function deleteHistorico() {
+  let apagarHistorico = document.querySelectorAll(".divRecarga");
+  apagarHistorico.forEach((divRecarga) => {
+    divRecarga.remove();
+  });
+}

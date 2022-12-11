@@ -73,7 +73,6 @@ async function idBilheteClicado(idClicado){
   let campoID =  document.querySelector("#campoBilhete");
 }
 
-
 function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   //BILHETES ATIVOS
   let ulBilhetesAtivos = document.querySelector("#ulBilhetesAtivos");
@@ -82,15 +81,15 @@ function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   bilheteAtivo.id = idBilhete;
   bilheteAtivo.setAttribute("onclick", "idBilheteClicado(this.id)");
 
-    let h3TipoBilhete = document.createElement("h3");
-    h3TipoBilhete.innerHTML = tipoBilhete;
-    bilheteAtivo.appendChild(h3TipoBilhete);
+  let h3TipoBilhete = document.createElement("h3");
+  h3TipoBilhete.innerHTML = tipoBilhete;
+  bilheteAtivo.appendChild(h3TipoBilhete);
 
-    let pTempoRestante = document.createElement("p");
-    pTempoRestante.innerHTML = tempoRestante;
-    bilheteAtivo.appendChild(pTempoRestante);
+  let pTempoRestante = document.createElement("p");
+  pTempoRestante.innerHTML = tempoRestante;
+  bilheteAtivo.appendChild(pTempoRestante);
 
-    ulBilhetesAtivos.appendChild(bilheteAtivo);
+  ulBilhetesAtivos.appendChild(bilheteAtivo);
 }
 
 function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
@@ -108,9 +107,10 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
   ulBilhetesDisponiveis.appendChild(bilheteDisponivel);
 }
 
-function deleteTicket(){
-  let apagarBilhete = document.querySelectorAll('.btnBilhetes');
-  apagarBilhete.forEach(btnBilhetes=>{
+function deleteTicket() {
+  let apagarBilhete = document.querySelectorAll(".btnBilhetes");
+  apagarBilhete.forEach((btnBilhetes) => {
     btnBilhetes.remove();
   });
 }
+  
