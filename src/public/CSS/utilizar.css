@@ -111,3 +111,14 @@
 #popupUtilizacao h2{
   background-color: var(--colorPopup);
 }
+#voltarhome{
+  background-color: var(--colorButton);
+  color: VAR(--colorTextInButton);
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+}

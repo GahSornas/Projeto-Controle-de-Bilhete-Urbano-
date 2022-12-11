@@ -81,6 +81,10 @@ function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   h3TipoBilhete.innerHTML = tipoBilhete;
   bilheteAtivo.appendChild(h3TipoBilhete);
 
+  let pTexto = document.createElement("p");
+  pTexto.innerHTML = "Tempo restante:"
+  bilheteAtivo.appendChild(pTexto);
+
   let pTempoRestante = document.createElement("p");
   pTempoRestante.innerHTML = tempoRestante;
   bilheteAtivo.appendChild(pTempoRestante);
@@ -110,7 +114,7 @@ function deleteTicket() {
   });
 }
   
-document.querySelectorAll(".btnBilhetes").onclick = function(){
+document.querySelectorAll(".ola").onclick = function(){
   document.getElementById("popupUtilizacao").style.display = "block";
 }
 
