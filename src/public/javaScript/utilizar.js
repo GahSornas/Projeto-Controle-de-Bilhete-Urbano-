@@ -113,3 +113,4 @@ function deleteTicket() {
     btnBilhetes.remove();
   });
 }
+  
