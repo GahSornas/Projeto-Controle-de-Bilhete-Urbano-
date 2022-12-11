@@ -47,7 +47,34 @@ async function connectBack(id){
         }
         for(let i in response.activeIDS)
         {
-          printBilhetesAtivos(response.activeIDS[i][1], 100000,response.activeIDS[i][0])
+          console.log(response.activeIDS[i]);
+          // 0: 24688
+          // ​
+          // 1: "7 dias"
+          // ​
+          // 2: "2022-12-11T21:35:36.121Z"
+          // ​
+          // 3: "0.00"
+          // printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
+          
+
+          switch(response.activeIDS[i][1]){
+            case '7 dias':
+              response.activeIDS[i][3] = 7 - response.activeIDS[i][3];
+              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
+              break;
+            case '30 dias':
+              response.activeIDS[i][3] = 30 - response.activeIDS[i][3];
+              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
+              break;
+            case 'unico':
+              response.activeIDS[i][3] = 40 - response.activeIDS[i][3];
+              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
+              break;
+            case 'duplo':
+              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
+              break;          
+          }
         }
     })
   }
