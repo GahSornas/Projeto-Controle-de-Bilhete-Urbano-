@@ -60,8 +60,8 @@ app.post("/generate", async (req, res) => {
     id: ID,
     message: "id criado",
   };
-  console.log("RES:");
-  console.log(res);
+  // console.log("RES:");
+  // console.log(res);
 });
 
 //Recarga
@@ -108,29 +108,30 @@ app.post("/utilize", async (req, res) => {
   let avalibleIds = recarga[0];
   let activeIDS = recarga[1];
   let currentTime = recarga[2][0][0];
+
+  //console.log(`AVALIBLE IDS:${avalibleIds}\nactiveIDS : ${activeIDS}\ncurrentTime : ${currentTime}`)
   currentTime = new Date(currentTime)
-  //console.log(currentTime)
- // let remainingTime = currentTime -  
- // console.log(currentTime)
-  // console.log(activeIDS[0][2])
   for(let i in activeIDS)
   {
       let timeID = new Date(activeIDS[i][2]);
-      console.log("timeID : %d\ncurrentTime: %d",timeID,currentTime);
-      console.log(activeIDS[i])
+      //console.log("timeID : %d\ncurrentTime: %d",timeID,currentTime);
+      //console.log(activeIDS[i])
+      
       //timeID = (currentTime - timeID)/(1000 *60);
       console.log(" current time: " + timeID);
       switch(activeIDS[i][1]){
         case '7 dias':
           timeID = (currentTime - timeID)/(1000*60*24);
           timeID = timeID.toFixed()
+
           console.log("timeID : %d",timeID);
           break;
       }
 
   }
-  if(activeIDS != 0 || avalibleIds !=0){
-    for(let i in avalibleIds)
+
+try{
+  for(let i in avalibleIds)
     {
       for(let j in activeIDS)
       {
@@ -139,14 +140,18 @@ app.post("/utilize", async (req, res) => {
           avalibleIds.splice(i,1);
         }
       }
+      if(activeIDS !== undefined && avalibleIds !==undefined)  throw "undefinied variables";
     }
-  }
+}catch(err){
+  console.log(err)
+}
+  
 
 
 
 
 
-  console.log(activeIDS);
+  //console.log(activeIDS);
 
   res.send({
     avalibleIds: avalibleIds,
