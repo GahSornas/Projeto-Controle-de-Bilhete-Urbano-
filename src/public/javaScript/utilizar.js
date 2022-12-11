@@ -1,44 +1,76 @@
-async function connectBack(id) {
-  //console.log("fetching...")
-  await fetch("/utilize", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      dataType: "json",
+async function utilizeID(FK_RECARGA_id_recarga){
+  await fetch('/utilizeID',{
+    method:'POST',
+    headers : {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'dataType': 'json'
     },
-    body: JSON.stringify({
-      id: id,
-    }),
-  })
-    .then((response) => response.json())
-    .then((response) => JSON.parse(JSON.stringify(response)))
-    .then((response) => {
-      console.log(response.avalibleIds);
-      for (let i in response.avalibleIds) {
-        console.log(response.avalibleIds[i][2], response.avalibleIds[i][0]);
-        printBilhetesDisponiveis(
-          response.avalibleIds[i][2],
-          response.avalibleIds[i][0]
-        );
+    body : JSON.stringify
+    (
+      {
+        FK_RECARGA_id_recarga : FK_RECARGA_id_recarga,
       }
-    });
+    )
+  }
+  )
+  // .then(response => response.json())
+  // .then(response => console.log(response))
 }
-//   .catch(error => console.log(error))
-// }
 
-document.getElementById("btnConsultarBilhete").onclick = async function () {
-  let campoID = await document.querySelector("#campoBilhete");
-  console.log(campoID.value);
+async function connectBack(id){
+  //console.log("fetching...") 
+  await fetch('/utilize',{
+      method:'POST',
+      headers : {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'dataType': 'json'
+      },
+      body : JSON.stringify
+      (
+        {
+           id : id,
+        }
+      )
+    }
+    )
+    .then(response => response.json())
+    .then(response => JSON.parse(JSON.stringify(response)))
+    .then(response=> 
+    {
+        console.log(response.avalibleIds)
+        for(let i in response.avalibleIds)
+        {
+            console.log(response.avalibleIds[i][2],response.avalibleIds[i][0])
+            printBilhetesDisponiveis(response.avalibleIds[i][2],response.avalibleIds[i][0]);
+        }
+        for(let i in response.activeIDS)
+        {
+          printBilhetesAtivos(response.activeIDS[i][1], 100000,response.activeIDS[i][0])
+        }
+    })
+  }
+
+
+
+document.getElementById("btnConsultarBilhete").onclick =  async function () {
+  
+  deleteTicket();
+  let campoID =  document.querySelector("#campoBilhete");
   await connectBack(campoID.value);
 };
+
 
 document.getElementById("btnFecharPopup").onclick = function () {
   document.getElementById("popupUtilizacao").style.display = "none";
 };
 
-function idBilheteClicado(idClicado) {
+async function idBilheteClicado(idClicado){
   console.log(idClicado);
+  await utilizeID(idClicado);
+  deleteTicket();
+  let campoID =  document.querySelector("#campoBilhete");
 }
 
 function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {

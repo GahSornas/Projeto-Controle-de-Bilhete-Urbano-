@@ -87,8 +87,11 @@ app.post("/recharge", async (req, res) => {
 
 
 app.post("/utilizeID",async (req,res) => {
-  v
-
+  let FK_RECARGA_id_recarga = req.body.FK_RECARGA_id_recarga;
+  db.insertUtilize(dbCredentials,FK_RECARGA_id_recarga);
+  res ={
+    message : "utlização feita"
+  }
 })
 
 
@@ -108,13 +111,13 @@ app.post("/utilize", async (req, res) => {
   //console.log(currentTime)
   //let remainingTime = currentTime - activeIDS[1][]
   
-  console.log(activeIDS[0][2])
+  // console.log(activeIDS[0][2])
 
   for(let i in avalibleIds)
   {
     for(let j in activeIDS)
     {
-      activeIDS[j][2] = (currentTime - new Date(activeIDS[j][2]))
+      //activeIDS[j][2] = (currentTime - new Date(activeIDS[j][2]))
       //console.log(currentTime - new Date(activeIDS[j][2]))
       if(avalibleIds[i][0] === activeIDS[j][0])
       {
@@ -125,13 +128,13 @@ app.post("/utilize", async (req, res) => {
   }
 
 
-  let remainingTime = 2400000 - activeIDS[0][2];
+  // let remainingTime = 2400000 - activeIDS[0][2];
 
-  console.log('Remaining time : %d',remainingTime);
-  if(activeIDS[0][2] >2400000)
-  {
+  // console.log('Remaining time : %d',remainingTime);
+  // if(activeIDS[0][2] >2400000)
+  // {
     // console.log('bilhete inválido');
-  } 
+  // } 
   //switch (avalibleIds[])
 
   //console.log(avalibleIds);
