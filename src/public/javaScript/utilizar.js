@@ -102,7 +102,8 @@ function printBilhetesAtivos(tipoBilhete, tempoRestante, idBilhete) {
   let bilheteAtivo = document.createElement("button");
   bilheteAtivo.classList.add("btnBilhetes");
   bilheteAtivo.id = idBilhete;
-  bilheteAtivo.setAttribute("onclick", "idBilheteClicado(this.id)");
+  bilheteAtivo.setAttribute("onclick", "idBilheteClicado(this.id), abrirPopup()");
+  
 
   let h3TipoBilhete = document.createElement("h3");
   h3TipoBilhete.innerHTML = tipoBilhete;
@@ -125,7 +126,7 @@ function printBilhetesDisponiveis(tipoBilhete, idBilhete) {
   let bilheteDisponivel = document.createElement("button");
   bilheteDisponivel.classList.add("btnBilhetes");
   bilheteDisponivel.id = idBilhete;
-  bilheteDisponivel.setAttribute("onclick", "idBilheteClicado(this.id)");
+  bilheteDisponivel.setAttribute("onclick", "idBilheteClicado(this.id), abrirPopup()");
 
   let h3TipoBilhete = document.createElement("h3");
   h3TipoBilhete.innerHTML = tipoBilhete;
@@ -141,7 +142,7 @@ function deleteTicket() {
   });
 }
   
-document.querySelectorAll(".ola").onclick = function(){
+function abrirPopup(){
   document.getElementById("popupUtilizacao").style.display = "block";
 }
 
