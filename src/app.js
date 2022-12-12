@@ -179,8 +179,13 @@ app.post("/utilize", async (req, res) => {
             activeIDS.splice(i,1);
             break;
           }
+          //console.log(diffTime.toString())
+          //activeIDS[i].push(timeID.toString());
+          diffTime = 7 - diffTime ;
+          //diffTime = moment(diffTime).format(diffTime,"[dias restantes:] dd")
+          diffTime = "dias : " + diffTime;
           console.log(diffTime.toString())
-          activeIDS[i].push(timeID.toString());
+          activeIDS[i].push(diffTime.toString());
           break;
         case '30 dias':
           diffTime = currentTime.diff(timeID, 'days')
@@ -189,8 +194,10 @@ app.post("/utilize", async (req, res) => {
             activeIDS.splice(i,1);
             break;
           }
-          console.log(timeID.toString())
-          activeIDS[i].push(timeID);
+          diffTime = 30 - diffTime;
+          diffTime = "dias : " + diffTime;
+         // console.log(timeID.toString())
+          activeIDS[i].push(diffTime.toString());
           console.log("timeID : %d",timeID);
           break;
         case 'unico':
@@ -200,9 +207,9 @@ app.post("/utilize", async (req, res) => {
             activeIDS.splice(i,1);
             break;
           }
-          let new1 = moment.duration(diffTime, "minutes");
-          console.log(new1.toString());   
-          new1 = moment().subtract(40, 'minutes');
+          diffTime = 40 - diffTime;
+          diffTime = "minutos : " + diffTime;
+          activeIDS[i].push(diffTime.toString());
           break; 
         case 'duplo':
           (currentTime - timeID)/(1000*60*40);

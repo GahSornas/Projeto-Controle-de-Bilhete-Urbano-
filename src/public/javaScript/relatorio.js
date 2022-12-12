@@ -45,35 +45,7 @@ function getHoursandMinutea(data) {
   return data;
 }
 
-// function getonlydate(today) {
-//   today = new Date(today);
-//   var dd = today.getDate();
-//   var mm = today.getMonth() + 1;
-//   var yyyy = today.getFullYear();
-//   if (dd < 10) {
-//     dd = "0" + dd;
-//   }
-//   if (mm < 10) {
-//     mm = "0" + mm;
-//   }
-//   var today = dd + "/" + mm + "/" + yyyy;
-//   return today;
-// }
 
-// async function consulta() {
-//   let campoID  =document.querySelector("#campoBilhete");
-//   console.log(campoID.value);
-// }
-
-// //estrutura dos prints //
-// printDataGeracao(apenas 0 data)
-// for(let i in response.avalibleIds)
-//   {
-//   printRecarga(1, 2 data)
-//   for(let i in response.avalibleIds){
-//     printUtilizacao(3 data, 3 hora)
-//   }
-// }
 
 document.getElementById("btnConsultarBilhete").onclick = async function () {
   deleteHistorico()

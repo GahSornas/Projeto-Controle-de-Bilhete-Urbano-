@@ -42,7 +42,8 @@ async function connectBack(id){
         console.log(response.avalibleIds)
         for(let i in response.avalibleIds)
         {
-            console.log(response.avalibleIds[i][2],response.avalibleIds[i][0])
+          //console.log(response.avalibleIds[i][2])
+          //console.log(response.avalibleIds[i][2],response.avalibleIds[i][0])
             printBilhetesDisponiveis(response.avalibleIds[i][2],response.avalibleIds[i][0]);
         }
 
@@ -61,24 +62,9 @@ async function connectBack(id){
           // 3: "0.00"
           // printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
           
+          printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
 
-          switch(response.activeIDS[i][1]){
-            case '7 dias':
-              response.activeIDS[i][3] = 7 - response.activeIDS[i][3];
-              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
-              break;
-            case '30 dias':
-              response.activeIDS[i][3] = 30 - response.activeIDS[i][3];
-              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
-              break;
-            case 'unico':
-              response.activeIDS[i][3] = 40 - response.activeIDS[i][3];
-              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
-              break;
-            case 'duplo':
-              printBilhetesAtivos(response.activeIDS[i][1], response.activeIDS[i][3],response.activeIDS[i][0]);
-              break;          
-          }
+
         }
     })
   }
