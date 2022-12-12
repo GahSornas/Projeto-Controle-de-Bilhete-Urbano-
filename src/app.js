@@ -106,11 +106,11 @@ app.post("/utilize", async (req, res) => {
   let activeIDS = recarga[1];
   let currentTime = recarga[2][0][0];
 
-
+ 
   try{
     for(let i in avalibleIds)
       {
-        for(let j in activeIDS)
+         for(let j in activeIDS)
         {
   
           if(avalibleIds[i][0] === activeIDS[j][0])
@@ -240,6 +240,17 @@ app.post("/utilize", async (req, res) => {
   };
 
 });
+
+app.post("/report", async (req,res) => {
+  FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
+  let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
+  res.send({
+    utilizes : result
+  })
+  res ={
+    utilizes : result
+  }
+})
 
 app.post("/teste", (req, res) => {
   console.log(req.body);
