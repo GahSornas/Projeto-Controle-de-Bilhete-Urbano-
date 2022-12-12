@@ -12,7 +12,8 @@ async function connectBack(FK_BILHETE_id_bilhete) {
     .then((response) => response.json())
     .then((response) => JSON.parse(JSON.stringify(response)))
     .then((res) => {
-      printDataGeracao(getonlydate(res.select1[0][0])); 
+      console.log(res.select1[0][0])
+      printDataGeracao(res.select1[0][0]); 
       // console.log(res.select1[0][0]);
       //console.log(res.select2);
       //console.log(res.select3);
@@ -38,20 +39,20 @@ function getHoursandMinutea(data) {
   return data;
 }
 
-function getonlydate(today) {
-  today = new Date(today);
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-  var yyyy = today.getFullYear();
-  if (dd < 10) {
-    dd = "0" + dd;
-  }
-  if (mm < 10) {
-    mm = "0" + mm;
-  }
-  var today = dd + "/" + mm + "/" + yyyy;
-  return today;
-}
+// function getonlydate(today) {
+//   today = new Date(today);
+//   var dd = today.getDate();
+//   var mm = today.getMonth() + 1;
+//   var yyyy = today.getFullYear();
+//   if (dd < 10) {
+//     dd = "0" + dd;
+//   }
+//   if (mm < 10) {
+//     mm = "0" + mm;
+//   }
+//   var today = dd + "/" + mm + "/" + yyyy;
+//   return today;
+// }
 
 // async function consulta() {
 //   let campoID  =document.querySelector("#campoBilhete");

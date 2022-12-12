@@ -203,7 +203,7 @@ app.post("/utilize", async (req, res) => {
           let new1 = moment.duration(diffTime, "minutes");
           console.log(new1.toString());   
           new1 = moment().subtract(40, 'minutes');
-          break;
+          break; 
         case 'duplo':
           (currentTime - timeID)/(1000*60*40);
           break;          
@@ -248,8 +248,10 @@ app.post("/report", async (req,res) => {
   FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
   let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
   console.log(result[0][0][0])
-  let test = moment(result[0][0][0], "DD MM YYYY hh:mm:ss");
-  console.log(test.toString())
+  result[0][0][0] = moment(result[0][0][0]).format(" DD/MM/YYYY").toString();
+ // console.log(test)
+  //result[0] = moment.format()
+  console.log(result[0])
   res.send({
     select1 : result[0],
     select2 : result[1],
