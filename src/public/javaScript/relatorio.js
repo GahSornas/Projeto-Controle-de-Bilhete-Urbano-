@@ -12,18 +12,18 @@ async function connectBack(FK_BILHETE_id_bilhete) {
     .then((response) => response.json())
     .then((response) => JSON.parse(JSON.stringify(response)))
     .then((res) => {
-      printDataGeracao(getonlydate(res.select1[0][0])); // primeiro select  apenas data
+      printDataGeracao(getonlydate(res.select1[0][0])); 
       // console.log(res.select1[0][0]);
       //console.log(res.select2);
       //console.log(res.select3);
 
       for (let i in res.select2) {
-        printRecarga(res.select2[i][0], "22"); //segundo select tipo e a data ada recarga
+        printRecarga(res.select2[i][0], "22", res.select2[i][2]); //ulId1
         //console.log(res.select2[i][0]);
 
         for (let j in res.select3[i]) {
           //console.log(res.select3[i][j][0]);
-          printUtilizacao(res.select3[i][j][0], res.select3[i][j][0], res.select2[i][0]); //terceiro select data utilização e hora da utilização
+          printUtilizacao(res.select3[i][j][0], res.select3[i][j][0], res.select2[i][2]); //ulId2
         }
       }
     })
@@ -80,7 +80,7 @@ function printDataGeracao(dataGeracao) {
   showDataGeracao.innerHTML = dataGeracao;
 }
 
-function printRecarga(tipoRecarga, dataRecarga) {
+function printRecarga(tipoRecarga, dataRecarga, idUl1) {
   //criação de div e inserção em ul existente
   let ulRecargas = document.querySelector("#ulRecargas");
   let divRecargas = document.createElement("div");
@@ -108,13 +108,13 @@ function printRecarga(tipoRecarga, dataRecarga) {
   //criação ulUtilizacao
   let ulUtilizacao = document.createElement("ul");
   ulUtilizacao.classList.add("ulUtilizacao");
-  ulUtilizacao.id = tipoRecarga;
+  ulUtilizacao.id = idUl1;
   divRecargas.appendChild(ulUtilizacao);
 }
 
-function printUtilizacao(dataUtilizacao, hrUtilizacao, idUl) {
+function printUtilizacao(dataUtilizacao, hrUtilizacao, idUl2) {
   //criação ul e div
-  let ulUtilizacao = document.getElementById(idUl);
+  let ulUtilizacao = document.getElementById(idUl2);
   let divInfoUtilizacao = document.createElement("div");
   divInfoUtilizacao.classList.add("divInfoUtilizacao");
   ulUtilizacao.appendChild(divInfoUtilizacao);
