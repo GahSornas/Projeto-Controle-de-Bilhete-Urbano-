@@ -18,14 +18,14 @@ async function connectBack(FK_BILHETE_id_bilhete) {
       //console.log(res.select2);
       //console.log(res.select3);
 
-      for (let i in res.select2) {
-        printRecarga(res.select2[i][0], "22", res.select2[i][2]); //ulId1
+      for (let i in res.select2) {       //só data//
+        printRecarga(res.select2[i][0], res.select2[i][1], res.select2[i][2]);
         //console.log(res.select2[i][0]);
 
         for (let j in res.select3[i]) {
           //console.log(res.select3[i][j][0]);
-          printUtilizacao(res.select3[i][j][0], res.select3[i][j][0], res.select2[i][2]); //ulId2
-        }
+          printUtilizacao(res.select3[i][j][0], res.select3[i][j][0], res.select2[i][2]);
+        }                   //só data//          //só hr//
       }
     })
     .catch((error) => console.log(error));
