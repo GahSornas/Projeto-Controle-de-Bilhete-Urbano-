@@ -5,32 +5,26 @@ async function connectBack(FK_BILHETE_id_bilhete) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body : JSON.stringify
-    (
-      {
-        FK_BILHETE_id_bilhete : FK_BILHETE_id_bilhete
-      }
-    )
-  }
-  )
-    .then(response => response.json())
-    .then(response => JSON.parse(JSON.stringify(response)))
-    .then(res => {
-      printDataGeracao(getonlydate(res.select1[0][0]));// primeiro select  apenas data
+    body: JSON.stringify({
+      FK_BILHETE_id_bilhete: FK_BILHETE_id_bilhete,
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => JSON.parse(JSON.stringify(response)))
+    .then((res) => {
+      printDataGeracao(getonlydate(res.select1[0][0])); // primeiro select  apenas data
       // console.log(res.select1[0][0]);
-      // console.log(res.select2);
+      //console.log(res.select2);
       //console.log(res.select3);
 
-      for(let i in res.select2)
-      {
-       printRecarga(res.select2[i][0],getonlydate(res.select[i][1])) //segundo select tipo e a data ada recarga
+      for (let i in res.select2) {
+        printRecarga(res.select2[i][0], "22"); //segundo select tipo e a data ada recarga
+        //console.log(res.select2[i][0]);
 
-        for(let j in res.select3){
-            console.log(res.select3[i][0][0])
-            console.log(res.select3[i][0][1])
-            printUtilizacao(getonlydate(res.select3[i][j][3]),getHoursandMinutea(res.select3[i][j][3])) //terceiro select data utilização e hora da utilização
+        for (let j in res.select3[i]) {
+          //console.log(res.select3[i][j][0]);
+          printUtilizacao(res.select3[i][j][0], res.select3[i][j][0], res.select2[i][0]); //terceiro select data utilização e hora da utilização
         }
-
       }
     })
     .catch((error) => console.log(error));
@@ -113,13 +107,14 @@ function printRecarga(tipoRecarga, dataRecarga) {
 
   //criação ulUtilizacao
   let ulUtilizacao = document.createElement("ul");
-  ulUtilizacao.id = "ulUtilizacao";
+  ulUtilizacao.classList.add("ulUtilizacao");
+  ulUtilizacao.id = tipoRecarga;
   divRecargas.appendChild(ulUtilizacao);
 }
 
-function printUtilizacao(dataUtilizacao, hrUtilizacao) {
+function printUtilizacao(dataUtilizacao, hrUtilizacao, idUl) {
   //criação ul e div
-  let ulUtilizacao = document.getElementById("ulUtilizacao");
+  let ulUtilizacao = document.getElementById(idUl);
   let divInfoUtilizacao = document.createElement("div");
   divInfoUtilizacao.classList.add("divInfoUtilizacao");
   ulUtilizacao.appendChild(divInfoUtilizacao);
