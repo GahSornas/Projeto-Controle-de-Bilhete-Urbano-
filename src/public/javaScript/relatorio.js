@@ -76,6 +76,7 @@ function getHoursandMinutea(data) {
 // }
 
 document.getElementById("btnConsultarBilhete").onclick = async function () {
+  deleteHistorico()
   let campoID = document.querySelector("#campoBilhete");
   //console.log(campoID.value);
   connectBack(campoID.value);
