@@ -163,12 +163,35 @@ async function seeID(dbConfig,ID) {
   
     try {  
       connection = await oracledb.getConnection(dbConfig);
-      let res = await connection.execute(`select data_hora_geracao, tipo_bilhete, data_hora_recarga, data_hora_utilizacao from BILHETE
-      JOIN RECARGA on id_bilhete=FK_BILHETE_id_bilhete
-      JOIN UTILIZACAO on id_recarga=FK_RECARGA_id_recarga WHERE FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`);
+      // let res = await connection.execute(`select data_hora_geracao, tipo_bilhete, data_hora_recarga, data_hora_utilizacao from BILHETE
+      // JOIN RECARGA on id_bilhete=FK_BILHETE_id_bilhete
+      // JOIN UTILIZACAO on id_recarga=FK_RECARGA_id_recarga WHERE FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`);
+      let res = await connection.execute(`select data_hora_geracao from BILHETE where id_bilhete=${FK_BILHETE_id_bilhete}`)
+      console.log("RES:")
+      console.log(res.rows)
+      let res1 = await connection.execute(`select tipo_bilhete, data_hora_recarga from RECARGA where FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`)
+      console.log("RES1")
+      console.log(res1.rows)
+      let res2;
+      let res3 = [];
+      for(let i in res1.rows)
+      {
+        res2 =  await connection.execute(`select data_hora_utilizacao, tipo_bilhete from UTILIZACAO
+        join RECARGA on FK_RECARGA_id_recarga=id_recarga
+        join BILHETE on FK_BILHETE_id_bilhete=id_bilhete
+        where FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete} and tipo_bilhete='${res1.rows[i][0]}'`)
+        // console.log("RES2")
+        // console.log(res2.rows);
+        res3.push(res2.rows);
+      }
+
+      
+      console.log("RES 3")
+      console.log(res3);
       connection.commit();
-      return res.rows;
-    } catch (err) {
+      return[res.rows,res1.rows,res3];  
+    }
+     catch (err) {
         console.error(err);
     } finally {
       if (connection) {

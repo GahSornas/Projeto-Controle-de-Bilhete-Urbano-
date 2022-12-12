@@ -4,7 +4,10 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
 const morgan = require('morgan');
+const  moment = require('moment'); // require
 
+
+moment().format(); 
 
 const dbCredentials = {
   user: "PI",
@@ -141,7 +144,6 @@ app.post("/utilize", async (req, res) => {
     }
     for(let i  in activeIDS)
     {
-      //console.log(activeIDS[i])
       for(let j in activeIDS)
       {
         if((activeIDS[i][0] === activeIDS[j][0]) && i!==j)
@@ -245,12 +247,19 @@ app.post("/report", async (req,res) => {
   FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
   let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
   res.send({
-    utilizes : result
+    select1 : result[0],
+    select2 : result[1],
+    select3 : result[2]
   })
   res ={
-    utilizes : result
+    select1 : result[0],
+    select2 : result[1],
+    select3 : result[2]
   }
 })
+
+
+
 
 app.post("/teste", (req, res) => {
   console.log(req.body);
