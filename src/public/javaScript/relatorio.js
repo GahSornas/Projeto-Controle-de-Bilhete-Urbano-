@@ -1,60 +1,61 @@
-async function connectBack(FK_BILHETE_id_bilhete){
-  await fetch('/report',{
-    method:'POST',
-    headers : {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+async function connectBack(FK_BILHETE_id_bilhete) {
+  await fetch("/report", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-    body : JSON.stringify
-    (
-      {
-        FK_BILHETE_id_bilhete : FK_BILHETE_id_bilhete
-      }
-    )
-  }
-  )
-    .then(response => response.json())
-    .then(response => JSON.parse(JSON.stringify(response)))
-    .then(res => res.utilizes)
-    .then(res => {
+    body: JSON.stringify({
+      FK_BILHETE_id_bilhete: FK_BILHETE_id_bilhete,
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => JSON.parse(JSON.stringify(response)))
+    .then((res) => res.utilizes)
+    .then((res) => {
       printDataGeracao(getonlydate(res[0][0]));
-      for(let i in res)
-      {
-        printRecarga(res[i][1],getonlydate(res[i][2]))
-
-        for(let j in res[i]){
-           printUtilizacao(getonlydate(res[i][3]),getHoursandMinutea(res[i][3]))
+      deleteHistorico();
+      for (let i in res) {
+        printRecarga(res[i][0], getonlydate(res[i][1]));
+        
+        for (let j in res[j]) {
+          printUtilizacao(
+            getonlydate(res[j][0]),
+            getHoursandMinutea(res[j][0])
+          );
         }
         //printUtilizacao(getonlydate(res[i][3]),getHoursandMinutea(res[i][3]));
-        console.log("get only date :"+ getonlydate(res[i][3]) + "hours :" +getHoursandMinutea(res[i][3]))
+        console.log(
+          "get only date :" +
+            getonlydate(res[i][3]) +
+            "hours :" +
+            getHoursandMinutea(res[i][3])
+        );
       }
     })
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error));
 }
 
-function getHoursandMinutea(data)
-{
-  data = new Date(data)
+function getHoursandMinutea(data) {
+  data = new Date(data);
   var hh = data.getHours();
   var mm = data.getMinutes();
-  data = hh + ':' + mm;
+  data = hh + ":" + mm;
   return data;
 }
 
-
-function getonlydate(today)
-{
-  today = new Date(today)
+function getonlydate(today) {
+  today = new Date(today);
   var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-   var today = dd + '/' + mm + '/' + yyyy;
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  var today = dd + "/" + mm + "/" + yyyy;
   return today;
 }
 
@@ -79,7 +80,7 @@ document.getElementById("btnConsultarBilhete").onclick = async function () {
   connectBack(campoID.value);
 };
 
-function printDataGeracao(dataGeracao){
+function printDataGeracao(dataGeracao) {
   //printar data de geração do bilhete
   let showDataGeracao = document.querySelector("#showDataGeracao");
   showDataGeracao.innerHTML = dataGeracao;
@@ -114,9 +115,9 @@ function printRecarga(tipoRecarga, dataRecarga) {
   let ulUtilizacao = document.createElement("ul");
   ulUtilizacao.id = "ulUtilizacao";
   divRecargas.appendChild(ulUtilizacao);
-};
+}
 
-function printUtilizacao(dataUtilizacao, hrUtilizacao){
+function printUtilizacao(dataUtilizacao, hrUtilizacao) {
   //criação ul e div
   let ulUtilizacao = document.getElementById("ulUtilizacao");
   let divInfoUtilizacao = document.createElement("div");
