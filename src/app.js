@@ -247,11 +247,36 @@ app.post("/utilize", async (req, res) => {
 app.post("/report", async (req,res) => {
   FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
   let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
-  console.log(result[0][0][0])
+  //console.log(result[0][0][0])
   result[0][0][0] = moment(result[0][0][0]).format(" DD/MM/YYYY").toString();
  // console.log(test)
   //result[0] = moment.format()
-  console.log(result[0])
+  for(let i in result[1])
+  {
+    result[1][i][1] = moment(result[1][i][1]).format(" DD/MM/YYYY").toString();
+    // console.log(result[1][i][1])
+  }
+  for(let i in result[2])
+  {
+    // console.log(result[2][i])
+    //result[2][i].push(result[2][i][0]);
+    // console.log(result[2][i][0][0])
+    result[2][i][0][0] =  moment(result[2][i][0][0]).format("DD/MM/YYYY").toString();
+    for(let j in  result[2][i])
+    {
+
+      console.log(result[2][i][j][0])
+      result[2][i][j][2] = result[2][i][j][0];
+
+      result[2][i][j][0] =  moment(result[2][i][j][0]).format("DD/MM/YYYY").toString();
+       result[2][i][j][2] = moment(result[2][i][j][2]).format("hh:mm").toString();
+      console.log(result[2][i][j])
+    }
+    //console.log(result[2][i])
+    result[2][i][2] = moment(result[2][i][2]).format("hh:mm").toString();
+  }
+
+  //console.log(result[0])
   res.send({
     select1 : result[0],
     select2 : result[1],

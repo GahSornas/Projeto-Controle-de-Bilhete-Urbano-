@@ -1,3 +1,7 @@
+// const moment = require('moment'); // require
+// moment().format(); 
+
+
 async function connectBack(FK_BILHETE_id_bilhete) {
   await fetch("/report", {
     method: "POST",
@@ -14,9 +18,7 @@ async function connectBack(FK_BILHETE_id_bilhete) {
     .then((res) => {
       console.log(res.select1[0][0])
       printDataGeracao(res.select1[0][0]); 
-      // console.log(res.select1[0][0]);
-      //console.log(res.select2);
-      //console.log(res.select3);
+      console.log(res.select3)
 
       for (let i in res.select2) {       //só data//
         printRecarga(res.select2[i][0], res.select2[i][1], res.select2[i][2]);
@@ -24,7 +26,11 @@ async function connectBack(FK_BILHETE_id_bilhete) {
 
         for (let j in res.select3[i]) {
           //console.log(res.select3[i][j][0]);
-          printUtilizacao(res.select3[i][j][0], res.select3[i][j][0], res.select2[i][2]);
+          //console.log(res.select2[i][2]);
+          
+          
+          printUtilizacao(res.select3[i][j][0], res.select3[i][j][2], res.select2[i][2]);
+          //printUtilizacao(onlyDate, onlyDayTime, res.select2[i][2]);
         }                   //só data//          //só hr//
       }
     })
