@@ -52,12 +52,13 @@ async function seeID(dbConfig,ID) {
       
       currentTime = moment(currentTime.rows[0][0])
 
-      let utilizacaoTime =  
+      // let latestUse = await connection.execute(`select DATA_HORA_UTILIZACAO where FK_RECARGA_ID_RECARGA `);
+      
+      let utilizacaoTime = 
       await connection.execute
       (
         `INSERT INTO UTILIZACAO VALUES
         (${generateID()}, ${FK_RECARGA_id_recarga}, current_timestamp)`
-        
       ); 
       let tipo_bilhete = await connection.execute(`select tipo_bilhete from recarga where ID_RECARGA= ${FK_RECARGA_id_recarga}
 

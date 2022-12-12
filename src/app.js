@@ -104,7 +104,7 @@ app.post("/utilizeID",async (req,res) => {
 app.post("/utilize", async (req, res) => {
   let id = req.body.id;
   let recarga = await db.seeUtilize(dbCredentials, id);
-
+  
   let avalibleIds = recarga[0];
   let activeIDS = recarga[1];
   let currentTime = recarga[2][0][0];
@@ -189,6 +189,7 @@ app.post("/utilize", async (req, res) => {
             activeIDS.splice(i,1);
             break;
           }
+          console.log(timeID.toString())
           activeIDS[i].push(timeID);
           console.log("timeID : %d",timeID);
           break;
