@@ -5,32 +5,32 @@ async function connectBack(FK_BILHETE_id_bilhete) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      FK_BILHETE_id_bilhete: FK_BILHETE_id_bilhete,
-    }),
-  })
-    .then((response) => response.json())
-    .then((response) => JSON.parse(JSON.stringify(response)))
-    .then((res) => res.utilizes)
-    .then((res) => {
-      printDataGeracao(getonlydate(res[0][0]));
-      deleteHistorico();
-      for (let i in res) {
-        printRecarga(res[i][0], getonlydate(res[i][1]));
-        
-        for (let j in res[j]) {
-          printUtilizacao(
-            getonlydate(res[j][0]),
-            getHoursandMinutea(res[j][0])
-          );
+    body : JSON.stringify
+    (
+      {
+        FK_BILHETE_id_bilhete : FK_BILHETE_id_bilhete
+      }
+    )
+  }
+  )
+    .then(response => response.json())
+    .then(response => JSON.parse(JSON.stringify(response)))
+    .then(res => {
+      printDataGeracao(getonlydate(res.select1[0][0]));// primeiro select  apenas data
+      // console.log(res.select1[0][0]);
+      // console.log(res.select2);
+      //console.log(res.select3);
+
+      for(let i in res.select2)
+      {
+       printRecarga(res.select2[i][0],getonlydate(res.select[i][1])) //segundo select tipo e a data ada recarga
+
+        for(let j in res.select3){
+            console.log(res.select3[i][0][0])
+            console.log(res.select3[i][0][1])
+            printUtilizacao(getonlydate(res.select3[i][j][3]),getHoursandMinutea(res.select3[i][j][3])) //terceiro select data utilização e hora da utilização
         }
-        //printUtilizacao(getonlydate(res[i][3]),getHoursandMinutea(res[i][3]));
-        console.log(
-          "get only date :" +
-            getonlydate(res[i][3]) +
-            "hours :" +
-            getHoursandMinutea(res[i][3])
-        );
+
       }
     })
     .catch((error) => console.log(error));
@@ -76,7 +76,7 @@ function getonlydate(today) {
 
 document.getElementById("btnConsultarBilhete").onclick = async function () {
   let campoID = document.querySelector("#campoBilhete");
-  console.log(campoID.value);
+  //console.log(campoID.value);
   connectBack(campoID.value);
 };
 
