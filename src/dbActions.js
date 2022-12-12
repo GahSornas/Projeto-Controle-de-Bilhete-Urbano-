@@ -1,4 +1,6 @@
 const oracledb = require('oracledb');
+const moment = require('moment');
+moment().format(); 
 
 
 function generateID(){
@@ -21,7 +23,7 @@ async function seeID(dbConfig,ID) {
         WHERE bilhete.id_bilhete=${ID}`,
         );
       
-        console.log(result)
+        // console.log(result)
       return [result.rows[0]];
   
     } catch (err) {
@@ -45,12 +47,30 @@ async function seeID(dbConfig,ID) {
   
       connection = await oracledb.getConnection(dbConfig);
       console.log('utilize %d',FK_RECARGA_id_recarga)
+      
+      let currentTime = await connection.execute(` SELECT systimestamp AS time FROM dual`);
+      
+      currentTime = moment(currentTime.rows[0][0])
+
+      let utilizacaoTime =  
       await connection.execute
       (
         `INSERT INTO UTILIZACAO VALUES
         (${generateID()}, ${FK_RECARGA_id_recarga}, current_timestamp)`
         
       ); 
+      let tipo_bilhete = await connection.execute(`select tipo_bilhete from recarga where ID_RECARGA= ${FK_RECARGA_id_recarga}
+
+      `)
+      console.log(tipo_bilhete.rows[0][0]);
+      if(tipo_bilhete.rows[0][0]!=='duplo')
+      {
+        try{
+          
+        }catch{
+
+        }
+      }
       await connection.execute
       (
         `UPDATE RECARGA SET creditos=(creditos-1) WHERE id_recarga=${FK_RECARGA_id_recarga}`
@@ -167,11 +187,11 @@ async function seeID(dbConfig,ID) {
       // JOIN RECARGA on id_bilhete=FK_BILHETE_id_bilhete
       // JOIN UTILIZACAO on id_recarga=FK_RECARGA_id_recarga WHERE FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`);
       let res = await connection.execute(`select data_hora_geracao from BILHETE where id_bilhete=${FK_BILHETE_id_bilhete}`)
-      console.log("RES:")
-      console.log(res.rows)
+      // console.log("RES:")
+      // console.log(res.rows)
       let res1 = await connection.execute(`select tipo_bilhete, data_hora_recarga from RECARGA where FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`)
-      console.log("RES1")
-      console.log(res1.rows)
+      // console.log("RES1")
+      // console.log(res1.rows)
       let res2;
       let res3 = [];
       for(let i in res1.rows)
@@ -185,9 +205,9 @@ async function seeID(dbConfig,ID) {
         res3.push(res2.rows);
       }
 
-      
-      console.log("RES 3")
-      console.log(res3);
+
+      // console.log("RES 3")
+      // console.log(res3);
       connection.commit();
       return[res.rows,res1.rows,res3];  
     }
