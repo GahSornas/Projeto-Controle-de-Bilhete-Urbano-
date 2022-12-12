@@ -4,7 +4,7 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
 const morgan = require('morgan');
-const  moment = require('moment'); // require
+const moment = require('moment'); // require
 
 
 moment().format(); 
@@ -122,7 +122,6 @@ app.post("/utilize", async (req, res) => {
           }
         }
       }
-
   }catch(err){
     console.log(err)
   }
@@ -162,28 +161,30 @@ app.post("/utilize", async (req, res) => {
   currentTime = new Date(currentTime)
   for(let i in activeIDS)
   {
+      let test1 = "1/1/2023"
+      test1 = moment(test1)
+      currentTime = moment(currentTime)
       let timeID = new Date(activeIDS[i][2]);
-      //console.log("timeID : %d\ncurrentTime: %d",timeID,currentTime);
-      //console.log(activeIDS[i])
+      timeID = moment(timeID);
+      // console.log("Difereça de tempo")
+      // console.log(currentTime.diff(timeID, 'days', true))
+      let diffTime;
       
-      //timeID = (currentTime - timeID)/(1000 *60);
-     // console.log(" current time: " + timeID);
       switch(activeIDS[i][1]){
         case '7 dias':
-          timeID = (currentTime - timeID)/(1000*60*60*2400);
-          timeID = timeID.toFixed(2)
-          if(timeID > 7)
+          diffTime = currentTime.diff(timeID, 'days')
+          if(diffTime > 7 )
           {
             console.log("bilhete inválido");
+            activeIDS.splice(i,1);
             break;
           }
-          console.log("timeID : %d",timeID);
-          activeIDS[i].push(timeID);
+          console.log(diffTime.toString())
+          activeIDS[i].push(timeID.toString());
           break;
         case '30 dias':
-          timeID = (currentTime - timeID)/(1000*60*24*60*2400);
-          timeID = timeID.toFixed(2)
-          if(timeID > 30)
+          diffTime = currentTime.diff(timeID, 'days')
+          if(diffTime > 30)
           {
             activeIDS.splice(i,1);
             break;
@@ -192,16 +193,15 @@ app.post("/utilize", async (req, res) => {
           console.log("timeID : %d",timeID);
           break;
         case 'unico':
-          timeID = (currentTime - timeID)/(1000*60*40);
-          timeID = timeID.toFixed(2)
-          if(timeID > 40)
+          diffTime = currentTime.diff(timeID, 'minutes',true);
+          if(diffTime > 40)
           {
             activeIDS.splice(i,1);
             break;
           }
-          activeIDS[i].push(timeID);
-          console.log(timeID)
-
+          let new1 = moment.duration(diffTime, "minutes");
+          console.log(new1.toString());   
+          new1 = moment().subtract(40, 'minutes');
           break;
         case 'duplo':
           (currentTime - timeID)/(1000*60*40);
@@ -246,6 +246,9 @@ app.post("/utilize", async (req, res) => {
 app.post("/report", async (req,res) => {
   FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
   let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
+  console.log(result[0][0][0])
+  let test = moment(result[0][0][0], "DD MM YYYY hh:mm:ss");
+  console.log(test.toString())
   res.send({
     select1 : result[0],
     select2 : result[1],
