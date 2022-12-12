@@ -87,7 +87,7 @@
 .divInfoRecarga h3{
   background-color: var(--elementoCentral);
 }
-#ulUtilizacao{
+.ulUtilizacao{
   background-color: var(--elementoCentral);
   display: flex;
   flex-direction: column;

@@ -190,7 +190,7 @@ async function seeID(dbConfig,ID) {
       let res = await connection.execute(`select data_hora_geracao from BILHETE where id_bilhete=${FK_BILHETE_id_bilhete}`)
       // console.log("RES:")
       // console.log(res.rows)
-      let res1 = await connection.execute(`select tipo_bilhete, data_hora_recarga from RECARGA where FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`)
+      let res1 = await connection.execute(`select tipo_bilhete, data_hora_recarga, ID_RECARGA from RECARGA where FK_BILHETE_id_bilhete=${FK_BILHETE_id_bilhete}`)
       // console.log("RES1")
       // console.log(res1.rows)
       let res2;
