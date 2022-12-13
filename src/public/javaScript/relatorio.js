@@ -16,19 +16,17 @@ async function connectBack(FK_BILHETE_id_bilhete) {
     .then((response) => response.json())
     .then((response) => JSON.parse(JSON.stringify(response)))
     .then((res) => {
-      console.log(res.select1[0][0])
+      
       printDataGeracao(res.select1[0][0]); 
-      console.log(res.select3)
 
       for (let i in res.select2) {       //só data//
+        //console.log( res.select2[i][0], res.select2[i][1], res.select2[i][2])
         printRecarga(res.select2[i][0], res.select2[i][1], res.select2[i][2]);
-        //console.log(res.select2[i][0]);
 
         for (let j in res.select3[i]) {
-          //console.log(res.select3[i][j][0]);
-          //console.log(res.select2[i][2]);
+
           
-          
+          //console.log(res.select3[i][j][0]+"  "+res.select3[i][j][2]+"   "+res.select2[i][2])        
           printUtilizacao(res.select3[i][j][0], res.select3[i][j][2], res.select2[i][2]);
           //printUtilizacao(onlyDate, onlyDayTime, res.select2[i][2]);
         }                   //só data//          //só hr//
@@ -37,13 +35,7 @@ async function connectBack(FK_BILHETE_id_bilhete) {
     .catch((error) => console.log(error));
 }
 
-function getHoursandMinutea(data) {
-  data = new Date(data);
-  var hh = data.getHours();
-  var mm = data.getMinutes();
-  data = hh + ":" + mm;
-  return data;
-}
+
 
 
 

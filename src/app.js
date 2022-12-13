@@ -4,7 +4,9 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const db = require(__dirname + "/dbActions.js");
 const morgan = require('morgan');
-const moment = require('moment'); // require
+const moment = require('moment'); 
+
+// require
 
 
 moment().format(); 
@@ -14,6 +16,8 @@ const dbCredentials = {
   password: "123456",
   connectString: "localhost:1521/xe",
 };
+
+
 
 
 app.use(morgan('dev'))
@@ -64,6 +68,7 @@ app.post("/generate", async (req, res) => {
   };
 
 });
+
 
 //Recarga
 
@@ -201,7 +206,7 @@ app.post("/utilize", async (req, res) => {
           console.log("timeID : %d",timeID);
           break;
         case 'unico':
-          diffTime = currentTime.diff(timeID, 'minutes',true);
+          diffTime = currentTime.diff(timeID, 'minutes');
           if(diffTime > 40)
           {
             activeIDS.splice(i,1);
@@ -216,28 +221,6 @@ app.post("/utilize", async (req, res) => {
           break;          
       }
   }
-
-// try{
-//   for(let i in avalibleIds)
-//     {
-//       for(let j in activeIDS)
-//       {
-
-//         if(avalibleIds[i][0] === activeIDS[j][0])
-//         {
-//           avalibleIds.splice(i,1);
-//         }
-//       }
-//     }
-// }catch(err){
-//   console.log(err)
-// }
-  
-
-
-
-
-
 
   res.send({
     avalibleIds: avalibleIds,
@@ -254,36 +237,30 @@ app.post("/utilize", async (req, res) => {
 app.post("/report", async (req,res) => {
   FK_BILHETE_id_bilhete = req.body.FK_BILHETE_id_bilhete;
   let result = await db.report(dbCredentials,FK_BILHETE_id_bilhete);
-  //console.log(result[0][0][0])
+  
   result[0][0][0] = moment(result[0][0][0]).format(" DD/MM/YYYY").toString();
- // console.log(test)
-  //result[0] = moment.format()
+
   for(let i in result[1])
   {
+    //console.log(result[1][i][1]);
     result[1][i][1] = moment(result[1][i][1]).format(" DD/MM/YYYY").toString();
-    // console.log(result[1][i][1])
   }
   for(let i in result[2])
   {
-    // console.log(result[2][i])
-    //result[2][i].push(result[2][i][0]);
-    // console.log(result[2][i][0][0])
-    result[2][i][0][0] =  moment(result[2][i][0][0]).format("DD/MM/YYYY").toString();
+    //console.log(result[2][i][0][0])
+    //result[2][i][0][0] =  moment(result[2][i][0][0]).format("DD/MM/YYYY").toString();
     for(let j in  result[2][i])
     {
-
-      console.log(result[2][i][j][0])
+      console.log(result[2][i][j]);
       result[2][i][j][2] = result[2][i][j][0];
 
       result[2][i][j][0] =  moment(result[2][i][j][0]).format("DD/MM/YYYY").toString();
-       result[2][i][j][2] = moment(result[2][i][j][2]).format("hh:mm").toString();
-      console.log(result[2][i][j])
+      result[2][i][j][2] = moment(result[2][i][j][2]).format("hh:mm").toString();
+      console.log(result[2][i][j]);
     }
-    //console.log(result[2][i])
     result[2][i][2] = moment(result[2][i][2]).format("hh:mm").toString();
   }
 
-  //console.log(result[0])
   res.send({
     select1 : result[0],
     select2 : result[1],
